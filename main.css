@@ -1,0 +1,173 @@
+
+*{ margin: 0 auto;}
+
+
+body {
+	background:white; 
+	margin: 0 auto; 
+	font-family: 'Raleway', sans-serif; 
+	height:2000px;
+
+	}
+
+div {
+	text-align: justify;
+    text-justify: inter-word;
+}
+
+footer {
+
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+
+}
+
+
+#header {
+	
+	position:static;
+	top:0px;
+	left:0px;
+	background:#0B2027; 
+	height:300px; 
+	width:100%;
+
+	
+
+	
+	}
+
+
+
+#header h1 {
+	padding-top: 75px;
+	text-align: center;
+	color:#70A9A1;
+	font-size: 100px;
+	font-weight: 500;
+	
+}
+
+#header h2 {
+	text-align: center;
+	color:white;
+	font-size: 20px;
+	font-weight: 100;
+	padding-top: 10px;
+	word-spacing: 5px;
+	
+}
+
+#header h3 {
+	text-align: center;
+	color:white;
+	font-size: 10px;
+	font-weight: 100;
+	padding-top: 5px;
+	
+}
+
+
+
+#subheader {
+	padding-top: 30px;
+	position: static;
+	background: white;
+	width: 1000px;
+	height:325px;
+	
+	text-align: justify;
+    text-justify: inter-word;
+    display: -webkit-flex; /* Safari */
+    -webkit-justify-content: space-around; /* Safari 6.1+ */
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#subheader p {
+	padding-right: 150px;
+	padding-left: 150px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	font-size: 22px;
+}
+
+#navwrap {
+	padding-bottom: 20px;
+}
+
+#nav {
+	width: 1000px;
+	word-spacing:5px;
+	display: -webkit-flex; /* Safari */
+    -webkit-justify-content: space-around; /* Safari 6.1+ */
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#bar {
+	 width:1000px; 
+	 height: 10px; 
+	 background:#0B2027;
+}
+	
+#page-wrap {
+	 padding-top: 25px;
+}
+
+.slide {
+	background: white;
+	height:1000px;
+	width:1000px;
+	padding-top:10px;
+}
+
+.slide h1 {
+	color:#70A9A1;
+	font-size: 60px;
+	font-weight: 100;
+	text-align: center;
+
+}
+
+.slide h2 {
+	color:#0B2027;
+	font-size: 30px;
+	font-weight: 500;
+	text-align: center;
+}
+
+.slide p {
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+
+.button {
+    background-color: white;
+    border: 5px solid #70A9A1;
+    color: #70A9A1;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 950;
+
+}
+
+	
+.page-padding {height:100px; width:100%;}
+
+a { color:white; text-decoration:none;  }
+	
+a:hover { background-color: #70A9A1; color: white; }
