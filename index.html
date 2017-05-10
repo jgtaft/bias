@@ -1,35 +1,21 @@
-
-<!DOCTYPE html>
 <html>
-
 <head>
-	<meta charset='UTF-8' />
-	
+<meta charset='UTF-8' />
 <link rel="stylesheet" type="text/css" href="main.css" />
 <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
-<script src="jquery-1.5.js"></script>
-<script src="functions.js"></script>
-
-
-
+<script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+<!-- <script src="jquery-1.5.js"></script> -->
+<!-- <script src="functions.js"></script> -->
 </head>
 <body>
-	
-
 
 <div id="header">
-
-	<h1> Giving Bias A Platform </h1>
-	<h2> Designing Against Bias & Discrimination In User-to-User Platforms</h2>
-
-	
-
-	
+<h1> Giving Bias A Platform </h1>
+<h2> Designing Against Bias & Discrimination In User-to-User Platforms</h2>
 </div>
 
 <div id="subheader">
-
 <p> The goal of the project is to document a range of design strategies that platforms can use to mediate interactions between their users, specifically with respect to addressing the effects of implicit/explicit bias in interactions. By restructuring information flows within exchanges (e.g., by limiting visible information about a transacting party; by highlighting or reframing information via dynamic UI; by requiring more user input in certain situations), platforms can use design strategies to mitigate against biased decision-making by users that may result, in aggregate, in systemic discrimination against certain protected groups. </p>
 
 </div>
@@ -38,22 +24,19 @@
 		<div id="nav">
 			<a href="#company" class="button">Company-Level Diversity & Inclusion</a>
 			<a href="#composition" class="button">Community Composition</a>
-			<a href="#policies" class="button">Community Policies & Messaging </a> 
+			<a href="#policies" class="button">Community Policies & Messaging </a>
 			<a href="#prompting" class="button">Prompting & Priming</a>
 			<a href="#howlearn" class="button">How Users Learn About One Another</a>
 		</div>
 		<div id="nav">
-			<a href="#whatlearn" class="button">What User Learn About One Another </a> 
+			<a href="#whatlearn" class="button">What User Learn About One Another </a>
 			<a href="#reputation" class="button">Reputation, Reliability & Ratings</a>
 			<a href="#data" class="button">Data Quality & Validation</a>
-			<a href="#reporting" class="button">Reporting & Sanctioning </a> 
-			<a href="#measurement" class="button">Measurement & Detection </a> 
+			<a href="#reporting" class="button">Reporting & Sanctioning </a>
+			<a href="#measurement" class="button">Measurement & Detection </a>
 		</div>
 	</div>
-	<div id="bar"></div>
-	
-
-
+<div id="bar"></div>
 <div id="page-wrap">
 
 	<div id="page1" class="slide">
@@ -74,6 +57,17 @@
 
 .arc path {
   stroke: #fff;
+}
+
+/*#rs {
+	stroke: black;
+	stroke-width: 3;
+}*/
+
+#rs text {
+	stroke: black;
+	font-size: 30;
+	alignment-baseline: middle;
 }
 
 </style>
@@ -121,15 +115,11 @@ d3.csv("data.csv", function(d) {
       .attr("dy", "0.35em")
       .text(function(d) { return d.data.Race; });
 });
-
 </script>
 
-
-
 		<p>Some companies seek to address bias on platforms by reforming the company itself (i.e., its organizational makeup and internal policies). Platform companies may seek to increase the representation of underrepresented groups, may offer training to their engineering teams and other members of their workforce about implicit bias and its effects, and may devote additional personnel and internal resources to the elimination of bias. These strategies assume a sort of “trickle-down” approach to bias mitigation: the presence of more diverse company personnel and explicit training about the problem of implicit bias may attune companies to disparate effects of their design decisions that might not have come to the fore otherwise.</p>
-		
 	</div> <!--END page1-->
-	
+
 	<div id="page2" class="slide">
 		<a name="composition"></a>
 		<h1> Community Composition </h1>
@@ -140,7 +130,7 @@ d3.csv("data.csv", function(d) {
 	</div> <!--END page2-->
 
 	<div id="page3" class="slide">
-		<a name="policies"></a> 
+		<a name="policies"></a>
 		<h1> Community Policies & Messaging </h1>
 		<div class="page-padding"></div>
 		<p>Community guidelines and terms of use may explicitly caution users against interacting on the platform in ways that exhibit bias against other users. Some platforms style such policies as “commitments” or “pledges” and incentivize or require users to engage directly with them; others require platform members to complete training on unconscious bias. Community guidelines may serve to cultivate norms for behavior on a platform, and also can establish bases for imposing sanctions if those norms are violated. Community policies can also be communicated less directly through messaging and imagery both on and off the platform, including site text/imagery and external advertising.</p>
@@ -152,7 +142,7 @@ d3.csv("data.csv", function(d) {
 		<div class="page-padding"></div>
 		<p>Platforms may use “just-in-time” prompts to induce users to reflect on their behavior during a site interaction, often by providing users with interstitial information or a pop-up dialog that must be acceded to before proceeding with a communication or transaction. These measures may remind users to abide by community guidelines to which they have previously agreed, hence making anti-bias commitments more top-of-mind. Such prompts may be triggered to appear only when likely biased behavior is detected, by default for all interactions, or when some other conditions are met.</p>
 	</div> <!--END page1-->
-	
+
 	<div id="page5" class="slide">
 		<a name="howlearn"></a>
 		<h1> How Users Learn About One Another </h1>
@@ -161,7 +151,7 @@ d3.csv("data.csv", function(d) {
 	</div> <!--END page2-->
 
 	<div id="page6" class="slide">
-		<a name="whatlearn"></a> 
+		<a name="whatlearn"></a>
 		<h1> What Users Learn About One Another </h1>
 		<div class="page-padding"></div>
 		<p>
@@ -173,7 +163,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 		<div class="page-padding"></div>
 		<p>Another set of platform strategies aim to equip users with information about what to expect from a transacting partner on the site—how reliable and trustworthy she can be expected to be, and how she can be expected to behave—based on indicators derived from past behavior. These indicators can confer a sense of expertise, reputation, or trustworthiness that may increase counterparties’ trust in the exchange—perhaps mitigating biases based on countervailing signals—and often take the form of badges or other graphic elements on users’ profiles. Similarly, testimonials, reviews, and ratings serve as signals of reliability—though the act of evaluation may itself operate as a conduit for bias.</p>
 	</div> <!--END page1-->
-	
+
 	<div id="page8" class="slide">
 		<a name="data"></a>
 		<h1> Data Quality & Validation </h1>
@@ -182,21 +172,265 @@ In offline interactions, indicators of identity, reputation, and personality can
 	</div> <!--END page2-->
 
 	<div id="page9" class="slide">
-		<a name="reporting"></a> 
+		<a name="reporting"></a>
 		<h1> Reporting & Sanctioning </h1>
 		<div class="page-padding"></div>
-		<p>Platforms may create infrastructures for reporting behavior that seems to exhibit bias, and sanctioning users who propagate it. In creating these mechanisms, platforms often take their cues from users who report witnessing or being subject to perceived biased behavior. Like offline analogues (including EEOC complaints and campus anti-bias hotlines), online bias reporting mechanisms typically elevate the concern institutionally, by referring them to a platform representative or site moderator with authority to adjudicate or investigate the concern. Platforms may also sanction users for behavior that appears to exhibit bias without reliance on the user community to signal it (for instance, by relying on independent measurement and bias detection; see #10).</p>
+		<h2> Reporting Bias: A <i>Choose Your Own Adventure</i> Game </h2>
+
+<svg id="rs" width="960" height="500"></svg>
+
+		<script>
+		var rs = d3.select("#rs");
+
+		function next(here, next){
+			d3.select(here).attr("display", "none");
+			d3.select(next).attr("display", "inline");
+		}
+
+		//START SET
+		var s0 = rs.append("g").attr("id", "s0");
+		s0.append("rect")
+			.attrs({width: 960, height: 500, fill: "lightblue"});
+		s0.append("rect")
+			.attrs({height: 60, width: 320, x: 320, y: 200, fill: "red"})
+			.on("click", function(){ next("#s0", "#s1"); });
+		s0.append("text")
+			.attrs({x: 470, y: 230 })
+			.attr("text-anchor", "middle")
+			.text("Click here to start.")
+			.on("click", function(){ next("#s0", "#s1"); });
+
+
+		//STEP 1: YOU SEE BIAS, WHAT DO YOU DO??
+		var s1 = rs.append("g").attr("id", "s1").attr("display", "none");
+		s1.append("rect")
+			.attrs({width: 960, height: 500, fill: "lightblue"});
+
+		s1.append("image")
+			.attr("xlink:href", "bad.jpeg")
+			.attrs({x: 40, y: 100})
+			.attr("transform", "scale(1.5)");
+
+		var text1 = ["You log into your favorite sharing economy site.", "You see a user treating another user poorly because of their race.", "What do you do?"];
+		for(var i=0; i<text1.length; i++){
+			s1.append("text")
+				.attrs({ x: 50, y: 50+ (35*i)})
+				.text(text1[i]);
+			}
+		s1.append("rect")
+			.on("click", function(){ next("#s1", "#e1"); })
+			.attrs({x:600, y:150, height: 60, width: 320, fill: "red"});
+		s1.append("text")
+			.on("click", function(){ next("#s1", "#e1"); })
+			.attrs({x:620, y:180 })
+			.text("Do Nothing.")
+
+		s1.append("rect")
+			.on("click", function(){ next("#s1", "#s2"); })
+			.attrs({x:600, y: 250, height: 60, width: 320, fill:"green"});
+		s1.append("text")
+			.on("click", function(){ next("#s1", "#s2"); })
+			.attrs({x:620, y: 280 })
+			.text("Report the behavior!");
+
+
+		//STEP 1, YOU HAVE CHOSEN NOT TO REPORT, YOU LOSE
+		var e1 = rs.append("g").attr("id", "e1").attr("display", "none");
+		e1.append("rect")
+			.attrs({width: 960, height: 500, fill: "lightblue"});
+		var text1_2 = ["You let someone get away with discrimination!", "Sorry, you lose the game.", "Make better choices next time!"];
+
+		e1.append("image")
+			.attr("xlink:href", "try.jpg")
+			.attrs({x: 70, y: 250})
+			.attr("transform", "scale(0.6)");
+
+		for(var i=0; i<text1_2.length; i++){
+			e1.append("text")
+				.attrs({ x: 50, y: 50+ (35*i)})
+				.text(text1_2[i]);
+			}
+		e1.append("rect")
+			.attrs({height: 60, width: 320, x: 350, y: 200, fill: "red"})
+			.on("click", function(){ next("#e1", "#s0"); });
+		e1.append("text")
+			.attrs({x: 370, y: 230 })
+			.text("Restart the game.")
+			.on("click", function(){ next("#e1", "#s0"); });
+
+
+		//STEP 2, YOU CHOOSE TO REPORT, WHAT HAPPENS?
+		var s2 = rs.append("g").attr("id", "s2").attr("display", "none");
+		s2.append("rect")
+			.attrs({width: 960, height: 500, fill: "lightblue"});
+
+		s2.append("image")
+			.attr("xlink:href", "youplatform.jpg")
+			.attrs({x: 40, y: 100})
+			.attr("transform", "scale(0.8)");
+
+		s2.append("text")
+			.attrs({x: 40, y:40})
+			.text("You chose to click the report button.")
+
+		var text2 = ["Oh, no!", "There's no option to report that behavior.", "What do you do?"];
+		for(var i=0; i<text2.length; i++){
+			s2.append("text")
+				.attrs({ x: 350, y: 90+ (35*i)})
+				.text(text2[i]);
+			}
+		s2.append("rect")
+			.on("click", function(){ next("#s2", "#e1"); })
+			.attrs({x:350, y:200, height: 60, width: 500, fill: "red"});
+		s2.append("text")
+			.on("click", function(){ next("#s2", "#e1"); })
+			.attrs({x:370, y:230 })
+			.attr("alignment-baseline", "middle")
+			.text("Don't report anything.");
+
+		s2.append("rect")
+			.on("click", function(){ next("#s2", "#s3_2"); })
+			.attrs({x:350, y: 300, height: 60, width: 500, fill:"green"});
+		s2.append("text")
+			.on("click", function(){ next("#s2", "#s3_2"); })
+			.attrs({x:370, y: 330 })
+			.attr("alignment-baseline", "middle")
+			.text("Report them for something else.");
+
+		s2.append("rect")
+			.on("click", function(){ next("#s2", "#s3_1"); })
+			.attrs({x:350, y: 400, height: 60, width: 500, fill:"green"});
+		s2.append("text")
+			.on("click", function(){ next("#s2", "#s3_1"); })
+			.attrs({x:370, y: 430 })
+			.attr("alignment-baseline", "middle")
+			.text("Contact the company to complain.");
+
+
+		//STEP 3_1, YOU HAVE CHOSEN TO COMPLAIN TO THE COMPANY
+		var s3_1 = rs.append("g").attr("id", "s3_1").attr("display", "none");
+		s3_1.append("rect")
+			.attrs({width: 960, height: 500, fill: "lightblue"});
+
+		s3_1.append("image")
+			.attr("xlink:href", "ban.jpg")
+			.attrs({x: 40, y: 200});
+
+		var text3_1 = ["Great job!", "The biased user has been banned from the platform.", "What do you do next?"];
+		for(var i=0; i<text3_1.length; i++){
+			s3_1.append("text")
+				.attrs({ x: 40, y: 50+ (35*i)})
+				.text(text3_1[i]);
+			}
+		s3_1.append("rect")
+			.on("click", function(){ next("#s3_1", "#s4_2"); })
+			.attrs({x:520, y:200, height: 60, width: 360, fill: "red"});
+		s3_1.append("text")
+			.on("click", function(){ next("#s3_1", "#s4_2"); })
+			.attrs({x:540, y:230 })
+			.attr("alignment-baseline", "middle")
+			.text("Do nothing more.")
+
+		s3_1.append("rect")
+			.on("click", function(){ next("#s3_1", "#s4_1"); })
+			.attrs({x: 520, y: 300, height: 60, width:360, fill:"green"});
+		s3_1.append("text")
+			.on("click", function(){ next("#s3_1", "#s4_1"); })
+			.attrs({ x:540, y: 330 })
+			.attr("alignment-baseline", "middle")
+			.text("Ask for better reporting.");
+
+
+		//STEP 3_2, YOU HAVE CHOSEN TO REPORT A DIFFERENT BEHAVIOR
+		var s3_2 = rs.append("g").attr("id", "s3_2").attr("display", "none");
+		s3_2.append("rect")
+			.attrs({width: 960, height: 500, fill: "lightblue"});
+
+		s3_2.append("image")
+			.attr("xlink:href", "tos.jpg")
+			.attrs({x: 70, y: 350})
+			.attr("transform", "scale(0.45)");
+
+		var text3_2 = ["You reported someone for something they didn't actually do!", "This is a violation of the platform's terms of service.", "You have been removed from the platform for bad behavior."];
+		for(var i=0; i<text3_2.length; i++){
+			s3_2.append("text")
+				.attrs({ x: 40, y: 40+ (35*i) })
+				.text(text3_2[i]);
+			}
+		s3_2.append("rect")
+			.on("click", function(){ next("#s3_2", "#s0"); })
+			.attrs({x:500, y:200, height: 60, width: 320, fill: "red"});
+		s3_2.append("text")
+			.on("click", function(){ next("#s3_2", "#s0"); })
+			.attrs({ x:520, y:230 })
+			.attr("alignment-baseline", "middle")
+			.text("Restart the game.");
+
+
+		//STEP 4_1, YOU HAVE CHOSEN TO COMPLAIN MORE
+		var s4_1 = rs.append("g").attr("id", "s4_1").attr("display", "none");
+		s4_1.append("rect")
+			.attrs({width: 960, height: 500, fill: "lightblue"});
+
+		s4_1.append("image")
+			.attr("xlink:href", "congrats.jpg")
+			.attrs({x: 50, y: 240})
+			.attr("transform", "scale(0.7)");
+
+		var text4_1 = ["The company has added the option to report bias!", "You've made the experience better for everyone.", "You have won the game! Great job!"];
+		for(var i=0; i<text4_1.length; i++){
+			s4_1.append("text")
+				.attrs({ x: 40, y: 50+ (35*i) })
+				.text(text4_1[i]);
+			}
+		s4_1.append("rect")
+			.on("click", function(){ next("#s4_1", "#s0"); })
+			.attrs({x: 500, y: 250, height: 60, width: 320, fill: "red"});
+		s4_1.append("text")
+			.on("click", function(){ next("#s4_1", "#s0"); })
+			.attrs({ x:520, y: 280 })
+			.attr("alignment-baseline", "middle")
+			.text("Play Again!");
+
+
+		//STEP 4_2 YOU HAVE CHOSEN TO DO NOTHING MORE
+		var s4_2 = rs.append("g").attr("id", "s4_2").attr("display", "none");
+		s4_2.append("rect")
+			.attrs({width: 960, height: 500, fill: "lightblue"});
+
+		s4_2.append("image")
+			.attr("xlink:href", "try.jpg")
+			.attrs({x: 50, y: 170})
+			.attr("transform", "scale(0.7)");
+
+		var text4_2 = ["You stopped one biased person, but the problem could recur.", "Try advocating for structural change next time."];
+		for(var i=0; i<text4_2.length; i++){
+			s4_2.append("text")
+				.attrs({ x: 40, y: 50+ (35*i) })
+				.text(text4_2[i]);
+			}
+		s4_2.append("rect")
+			.on("click", function(){ next("#s4_2", "#s0"); })
+			.attrs({x: 500, y: 250, height: 60, width: 320, fill: "red"});
+		s4_2.append("text")
+			.on("click", function(){ next("#s4_2", "#s0"); })
+			.attrs({ x:520, y:280 })
+			.attr("alignment-baseline", "middle")
+			.text("Restart the game.");
+
+
+		</script>
 	</div> <!--END page3-->
 	<div id="page10" class="slide">
-		<a name="measurement"></a> 
+		<a name="measurement"></a>
 		<h1> Measurement & Detection </h1>
 		<div class="page-padding"></div>
 		<p>Finally, platforms may make independent efforts to detect the presence of bias and any potentially disparate effects of their facially neutral design decisions. Such measurement is a precondition to rigorous analysis of the systemic effects marginalized users may experience on a site, and borrows from offline analogues like the collection of voluntary demographic data in employment. Platforms might seek to collect demographic data from their users directly, or might infer it from other disclosed information. Platforms may also seek to detect bias itself in site activity using machine learning techniques.</p>
 	</div> <!--END page3-->
-	
+
 </div> <!--END page-wrap-->
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script> -->
 <script></script>
 </body>
 <footer>
