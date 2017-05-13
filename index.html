@@ -7,6 +7,30 @@
 <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
 <!-- <script src="jquery-1.5.js"></script> -->
 <!-- <script src="functions.js"></script> -->
+
+<style>
+
+.arc text {
+font: 50px sans-serif;
+text-anchor: middle;
+fill:white;
+}
+
+.arc path {
+stroke: #fff;
+}
+
+#rs text {
+stroke: black;
+font-size: 30;
+alignment-baseline: middle;
+}
+
+#diversebuttons{
+	padding-left: 350px;
+	padding-top: 40px;
+}
+</style>
 </head>
 <body>
 
@@ -44,78 +68,220 @@
 		<h1> Company-Level Diversity & Inclusion </h1>
 		<div class="page-padding"></div>
 
-		<h2> Diversity of Uber's Technical Workforce </h2>
+		<h2>Diversity of Apple, Facebook, and Google's Technical Workforce</h2>
+		<div id="diversebuttons">
+			<a class="button" onclick="showGender()">Gender</a>
+			<a class="button" onclick="showRace()">Ethnicity </a>
+		</div>
+
+<svg id="diversity" width="960" height="500"></svg>
+
+	<script>
+	//with help from https://bl.ocks.org/mbostock/3887235
+
+	function showGender(){
+		d3.select("#race").attr("display", "none");
+		d3.select("#gender").attr("display", "inline");
+	}
+	function showRace(){
+		d3.select("#gender").attr("display", "none");
+		d3.select("#race").attr("display", "inline");
+	}
+
+	var diversity = d3.select("#diversity"),
+	    width = +diversity.attr("width"),
+	    height = +diversity.attr("height"),
+	    radius = Math.min(width, height) / 2;
+
+	var color = d3.scaleOrdinal(["#5DA5DA", "#FAA43A", "#60BD68", "#F17CB0", "#B276B2", "#DECF3F", "#ff8c00"]);
+	var gendercolor = d3.scaleOrdinal(["#5DA5DA","#F17CB0"]);
+
+	var pie = d3.pie()
+	    .sort(null)
+	    .value(function(d) { return d.Percentage; });
+
+	var path = d3.arc()
+	    .outerRadius(radius - 100)
+	    .innerRadius(0);
+
+	var label = d3.arc()
+	    .outerRadius(radius - 40)
+	    .innerRadius(radius - 40);
+
+	//overall svg for race pie charts
+	var race = diversity.append("g").attr("id", "race");
+
+	//make apple race pie chart
+	var appleethnic = race.append("g").attr("transform", "translate(" + width / 6 + "," + height / 2 + ")");
+
+	d3.csv("corporate/appleethnicdata.csv", function(d) {
+	  d.Percentage = +d.Percentage;
+	  return d;
+	}, function(error, data) {
+	  if (error) throw error;
+
+	  var arc = appleethnic.selectAll(".arc")
+	    .data(pie(data))
+	    .enter().append("g")
+	      .attr("class", "arc");
+
+	  arc.append("path")
+	      .attr("d", path)
+	      .attr("fill", function(d) { return color(d.data.Race); });
+
+	  arc.append("text")
+	      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
+	      .attr("dy", "0.35em")
+	      .text(function(d) { return d.data.Percentage; });
+	});
+
+	//make google race pie chart
+	var googleethnic = race.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+	d3.csv("corporate/googleethnicdata.csv", function(d) {
+	  d.Percentage = +d.Percentage;
+	  return d;
+	}, function(error, data) {
+	  if (error) throw error;
+
+	  var arc = googleethnic.selectAll(".arc")
+	    .data(pie(data))
+	    .enter().append("g")
+	      .attr("class", "arc");
+
+	  arc.append("path")
+	      .attr("d", path)
+	      .attr("fill", function(d) { return color(d.data.Race); });
+
+	  arc.append("text")
+	      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
+	      .attr("dy", "0.35em")
+	      .text(function(d) { return d.data.Percentage; });
+	});
+
+	//make facebook race pie chart
+	var facebookethnic = race.append("g").attr("transform", "translate(" + width / 1.2 + "," + height / 2 + ")");
+
+	d3.csv("corporate/facebookethnicdata.csv", function(d) {
+	  d.Percentage = +d.Percentage;
+	  return d;
+	}, function(error, data) {
+	  if (error) throw error;
+
+	  var arc = facebookethnic.selectAll(".arc")
+	    .data(pie(data))
+	    .enter().append("g")
+	      .attr("class", "arc");
+
+	  arc.append("path")
+	      .attr("d", path)
+	      .attr("fill", function(d) { return color(d.data.Race); });
+
+	  arc.append("text")
+	      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
+	      .attr("dy", "0.35em")
+	      .text(function(d) { return d.data.Percentage; });
+	});
+
+	race.append("text")
+	 .attrs({x:160, y: 80, stroke: "black"})
+		.text("Apple");
+	race.append("text")
+		.attrs({x:450, y: 80, stroke: "black"})
+		.text("Facebook");
+	race.append("text")
+		.attrs({x:740, y: 80, stroke: "black"})
+		.text("Google");
 
 
-		<style>
+	//make overall group for appending gender data
+	var gender = diversity.append("g").attr("id", "gender").attr("display", "none");
 
-.arc text {
-  font: 50px sans-serif;
-  text-anchor: middle;
-  fill:white;
-}
+	///Apple Gender data
+	var applegender = gender.append("g").attr("transform", "translate(" + width / 6 + "," + height / 2 + ")");
 
-.arc path {
-  stroke: #fff;
-}
+	d3.csv("corporate/applegenderdata.csv", function(d) {
+	  d.Percentage = +d.Percentage;
+	  return d;
+	}, function(error, data) {
+	  if (error) throw error;
 
-/*#rs {
-	stroke: black;
-	stroke-width: 3;
-}*/
+	  var arc = applegender.selectAll(".arc")
+	    .data(pie(data))
+	    .enter().append("g")
+	      .attr("class", "arc");
 
-#rs text {
-	stroke: black;
-	font-size: 30;
-	alignment-baseline: middle;
-}
+	  arc.append("path")
+	      .attr("d", path)
+	      .attr("fill", function(d) { return gendercolor(d.data.Gender); });
 
-</style>
-<svg width="960" height="500"></svg>
+	  arc.append("text")
+	      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
+	      .attr("dy", "0.35em")
+	      .text(function(d) { return d.data.Percentage; });
+	});
 
-<script>
 
-var svg3 = d3.select("svg"),
-    width = +svg3.attr("width"),
-    height = +svg3.attr("height"),
-    radius = Math.min(width, height) / 2,
-    g = svg3.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+	///Facebook Gender data
+	var facebookgender = gender.append("g").attr("transform", "translate(" + width / 1.2 + "," + height / 2 + ")");
 
-var color = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+	d3.csv("corporate/facebookgenderdata.csv", function(d) {
+	  d.Percentage = +d.Percentage;
+	  return d;
+	}, function(error, data) {
+	  if (error) throw error;
 
-var pie = d3.pie()
-    .sort(null)
-    .value(function(d) { return d.Percentage; });
+	  var arc = facebookgender.selectAll(".arc")
+	    .data(pie(data))
+	    .enter().append("g")
+	      .attr("class", "arc");
 
-var path = d3.arc()
-    .outerRadius(radius - 10)
-    .innerRadius(0);
+	  arc.append("path")
+	      .attr("d", path)
+	      .attr("fill", function(d) { return gendercolor(d.data.Gender); });
 
-var label = d3.arc()
-    .outerRadius(radius - 40)
-    .innerRadius(radius - 40);
+	  arc.append("text")
+	      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
+	      .attr("dy", "0.35em")
+	      .text(function(d) { return d.data.Percentage; });
+	});
 
-d3.csv("data.csv", function(d) {
-  d.Percentage = +d.Percentage;
-  return d;
-}, function(error, data) {
-  if (error) throw error;
 
-  var arc = g.selectAll(".arc")
-    .data(pie(data))
-    .enter().append("g")
-      .attr("class", "arc");
+	////Google Gender data
+	var googlegender = gender.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-  arc.append("path")
-      .attr("d", path)
-      .attr("fill", function(d) { return color(d.data.Race); });
+	d3.csv("corporate/googlegenderdata.csv", function(d) {
+	  d.Percentage = +d.Percentage;
+	  return d;
+	}, function(error, data) {
+	  if (error) throw error;
 
-  arc.append("text")
-      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
-      .attr("dy", "0.35em")
-      .text(function(d) { return d.data.Race; });
-});
-</script>
+	  var arc = googlegender.selectAll(".arc")
+	    .data(pie(data))
+	    .enter().append("g")
+	      .attr("class", "arc");
+
+	  arc.append("path")
+	      .attr("d", path)
+	      .attr("fill", function(d) { return gendercolor(d.data.Gender); });
+
+	  arc.append("text")
+	      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
+	      .attr("dy", "0.35em")
+	      .text(function(d) { return d.data.Percentage; });
+	});
+
+	gender.append("text")
+	 .attrs({x:160, y: 80, stroke: "black"})
+		.text("Apple");
+	gender.append("text")
+		.attrs({x:450, y: 80, stroke: "black"})
+		.text("Facebook");
+	gender.append("text")
+		.attrs({x:740, y: 80, stroke: "black"})
+		.text("Google");
+
+	</script>
 
 		<p>Some companies seek to address bias on platforms by reforming the company itself (i.e., its organizational makeup and internal policies). Platform companies may seek to increase the representation of underrepresented groups, may offer training to their engineering teams and other members of their workforce about implicit bias and its effects, and may devote additional personnel and internal resources to the elimination of bias. These strategies assume a sort of “trickle-down” approach to bias mitigation: the presence of more diverse company personnel and explicit training about the problem of implicit bias may attune companies to disparate effects of their design decisions that might not have come to the fore otherwise.</p>
 	</div> <!--END page1-->
@@ -133,6 +299,8 @@ d3.csv("data.csv", function(d) {
 		<a name="policies"></a>
 		<h1> Community Policies & Messaging </h1>
 		<div class="page-padding"></div>
+
+
 		<p>Community guidelines and terms of use may explicitly caution users against interacting on the platform in ways that exhibit bias against other users. Some platforms style such policies as “commitments” or “pledges” and incentivize or require users to engage directly with them; others require platform members to complete training on unconscious bias. Community guidelines may serve to cultivate norms for behavior on a platform, and also can establish bases for imposing sanctions if those norms are violated. Community policies can also be communicated less directly through messaging and imagery both on and off the platform, including site text/imagery and external advertising.</p>
 	</div> <!--END page3-->
 
@@ -207,7 +375,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 			.attrs({width: 960, height: 500, fill: "lightblue"});
 
 		s1.append("image")
-			.attr("xlink:href", "bad.jpeg")
+			.attr("xlink:href", "cya/bad.jpeg")
 			.attrs({x: 40, y: 100})
 			.attr("transform", "scale(1.5)");
 
@@ -241,7 +409,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 		var text1_2 = ["You let someone get away with discrimination!", "Sorry, you lose the game.", "Make better choices next time!"];
 
 		e1.append("image")
-			.attr("xlink:href", "try.jpg")
+			.attr("xlink:href", "cya/try.jpg")
 			.attrs({x: 70, y: 250})
 			.attr("transform", "scale(0.6)");
 
@@ -265,7 +433,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 			.attrs({width: 960, height: 500, fill: "lightblue"});
 
 		s2.append("image")
-			.attr("xlink:href", "youplatform.jpg")
+			.attr("xlink:href", "cya/youplatform.jpg")
 			.attrs({x: 40, y: 100})
 			.attr("transform", "scale(0.8)");
 
@@ -313,7 +481,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 			.attrs({width: 960, height: 500, fill: "lightblue"});
 
 		s3_1.append("image")
-			.attr("xlink:href", "ban.jpg")
+			.attr("xlink:href", "cya/ban.jpg")
 			.attrs({x: 40, y: 200});
 
 		var text3_1 = ["Great job!", "The biased user has been banned from the platform.", "What do you do next?"];
@@ -347,7 +515,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 			.attrs({width: 960, height: 500, fill: "lightblue"});
 
 		s3_2.append("image")
-			.attr("xlink:href", "tos.jpg")
+			.attr("xlink:href", "cya/tos.jpg")
 			.attrs({x: 70, y: 350})
 			.attr("transform", "scale(0.45)");
 
@@ -373,7 +541,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 			.attrs({width: 960, height: 500, fill: "lightblue"});
 
 		s4_1.append("image")
-			.attr("xlink:href", "congrats.jpg")
+			.attr("xlink:href", "cya/congrats.jpg")
 			.attrs({x: 50, y: 240})
 			.attr("transform", "scale(0.7)");
 
@@ -399,7 +567,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 			.attrs({width: 960, height: 500, fill: "lightblue"});
 
 		s4_2.append("image")
-			.attr("xlink:href", "try.jpg")
+			.attr("xlink:href", "cya/try.jpg")
 			.attrs({x: 50, y: 170})
 			.attr("transform", "scale(0.7)");
 
@@ -425,6 +593,100 @@ In offline interactions, indicators of identity, reputation, and personality can
 		<a name="measurement"></a>
 		<h1> Measurement & Detection </h1>
 		<div class="page-padding"></div>
+		Blue Raters: 10<input id="blueSlider" type="range" min="10" max="200" value="50" oninput="updateNums(value, redSlider.value)">200<br/>
+		Red Raters: 10<input id="redSlider" type="range" min="10" max="200" value="50" oninput="updateNums(blueSlider.value, value)">200<br/>
+		<svg id = "md" width="960" height="500"></svg>
+		<script>
+		var md = d3.select("#md");
+
+		xScale = d3.scaleLinear().domain([0,650]).range([150, 700]);
+		xAxis = d3.axisBottom(xScale);
+		// yScale = d3.scaleLinear().domain([0,30]).range([0, width]);
+		// xAxis = d3.axisBottom(xScale);
+		md.append("text").attrs({x: 20, y: 100, stroke:"black"}).text("Ratings of Blue");
+		md.append("text").attrs({x: 20, y: 200, stroke:"black"}).text("Ratings of Red");
+		md.append("text").attrs({x: 20, y: 300, stroke:"black"}).text("Mean Rating");
+
+		function updateNums(blue, red){
+			d3.selectAll(".md").remove();
+
+			var ownDist = d3.randomNormal(500,50);
+			var otherDist = d3.randomNormal(400,100);
+			var blueOwn = [];
+			var redBlue = [];
+			var redOwn = [];
+			var blueRed = []
+			var meanRating = [];
+
+			for (var i=0; i<blue; i++){
+				var bO = ownDist();
+				var bR = otherDist();
+				blueOwn.push({id: i, x: bO, y: 100});
+				blueRed.push({id: i, x: bR, y: 200});
+				meanRating.push({x: bO, y: 300});
+				meanRating.push({x: rO, y: 300});
+			}
+
+			for (var i=0; i<red; i++){
+				var rB = otherDist();
+				var rO = ownDist();
+				redBlue.push({id: i, x: rB, y: 100});
+				redOwn.push({id: i, x: rO, y: 200});
+				meanRating.push({x: rB, y: 300});
+				meanRating.push({x: bR, y: 300});
+			}
+
+			console.log(d3.mean(blueOwn))
+			md.selectAll("circle#bb").data(blueOwn).enter().append("circle")
+				.attr("cx", function(d){ return xScale(d.x); })
+				.attr("cy", function(d){ return d.y; })
+				.attrs({id: "bb", class: "md", r: 5, fill: "blue", opacity: 0.2});
+			md.selectAll("circle#rb").data(redBlue).enter().append("circle")
+				.attr("cx", function(d){ return xScale(d.x); })
+				.attr("cy", function(d){ return d.y; })
+				.attrs({id: "rb", class: "md", r: 5, fill:"red" , opacity: 0.2});
+
+			md.selectAll("circle#br").data(blueRed).enter().append("circle")
+				.attr("cx", function(d){ return xScale(d.x); })
+				.attr("cy", function(d){ return d.y; })
+				.attrs({id: "br", class: "md", r: 5, fill: "blue", opacity: 0.2});
+			md.selectAll("circle#rr").data(redOwn).enter().append("circle")
+				.attr("cx", function(d){ return xScale(d.x); })
+				.attr("cy", function(d){ return d.y; })
+				.attrs({id: "rr", class: "md", r: 5, fill: "red", opacity: 0.2});
+
+			//figure out what is happening here
+			md.selectAll("circle#all").data(meanRating).enter().append("circle")
+				.attrs(function(d){
+					if (d.x){
+						return {x: xScale(d.x), y: d.y};
+					}
+				})
+				// }"cx", function(d){
+				// 	console.log("original is " + d.x + " and scaled is " + xScale(d.x));
+				// 	return xScale(d.x); })
+				// .attr("cy", function(d){ return d.y; })
+				.attrs({id: "all", class: "mdCircle", r: 5, fill: "green", opacity: 0.2});
+
+			var redMean = (d3.mean(redOwn) + d3.mean(blueRed))/2
+			// console.log(redMean);
+			var blueMean = (d3.mean(blueOwn) + d3.mean(redBlue))/2
+			md.append("text").attrs({class: "md", x: 750, y: 100, stroke:"black"}).text("Average rating of blue: ");
+			md.append("text").attrs({class: "md", x: 750, y: 200, stroke:"black"}).text("Average rating of Red: ");
+			md.append("text").attrs({class: "md", x: 750, y: 300, stroke:"black"}).text("Mean Rating");
+		}
+
+		updateNums(50, 50);
+		//make distribution lines if possible!!!
+		// var blueOwnLine = d3.svgLine()
+		// 	.x(function(d){ return })
+		// md.append("path").datum(blueOwn)
+		// 	.attr("d", blueOwnLine)
+		// 	.attr("stroke", "blue");
+
+		md.append("g").call(xAxis).attr("transform", "translate(0,350)");
+
+		</script>
 		<p>Finally, platforms may make independent efforts to detect the presence of bias and any potentially disparate effects of their facially neutral design decisions. Such measurement is a precondition to rigorous analysis of the systemic effects marginalized users may experience on a site, and borrows from offline analogues like the collection of voluntary demographic data in employment. Platforms might seek to collect demographic data from their users directly, or might infer it from other disclosed information. Platforms may also seek to detect bias itself in site activity using machine learning techniques.</p>
 	</div> <!--END page3-->
 
