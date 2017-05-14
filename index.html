@@ -30,6 +30,12 @@ alignment-baseline: middle;
 	padding-left: 350px;
 	padding-top: 40px;
 }
+
+#redSlider, #blueSlider {
+	width: 300px;
+}
+
+
 </style>
 </head>
 <body>
@@ -358,9 +364,9 @@ In offline interactions, indicators of identity, reputation, and personality can
 		//START SET
 		var s0 = rs.append("g").attr("id", "s0");
 		s0.append("rect")
-			.attrs({width: 960, height: 500, fill: "lightblue"});
+			.attrs({width: 960, height: 500, fill: "LightSteelBlue"});
 		s0.append("rect")
-			.attrs({height: 60, width: 320, x: 320, y: 200, fill: "red"})
+			.attrs({height: 60, width: 320, x: 320, y: 200, fill: "wheat"})
 			.on("click", function(){ next("#s0", "#s1"); });
 		s0.append("text")
 			.attrs({x: 470, y: 230 })
@@ -372,7 +378,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 		//STEP 1: YOU SEE BIAS, WHAT DO YOU DO??
 		var s1 = rs.append("g").attr("id", "s1").attr("display", "none");
 		s1.append("rect")
-			.attrs({width: 960, height: 500, fill: "lightblue"});
+			.attrs({width: 960, height: 500, fill: "LightSteelBlue"});
 
 		s1.append("image")
 			.attr("xlink:href", "cya/bad.jpeg")
@@ -387,7 +393,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 			}
 		s1.append("rect")
 			.on("click", function(){ next("#s1", "#e1"); })
-			.attrs({x:600, y:150, height: 60, width: 320, fill: "red"});
+			.attrs({x:600, y:150, height: 60, width: 320, fill: "wheat"});
 		s1.append("text")
 			.on("click", function(){ next("#s1", "#e1"); })
 			.attrs({x:620, y:180 })
@@ -395,7 +401,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 
 		s1.append("rect")
 			.on("click", function(){ next("#s1", "#s2"); })
-			.attrs({x:600, y: 250, height: 60, width: 320, fill:"green"});
+			.attrs({x:600, y: 250, height: 60, width: 320, fill:"wheat"});
 		s1.append("text")
 			.on("click", function(){ next("#s1", "#s2"); })
 			.attrs({x:620, y: 280 })
@@ -405,7 +411,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 		//STEP 1, YOU HAVE CHOSEN NOT TO REPORT, YOU LOSE
 		var e1 = rs.append("g").attr("id", "e1").attr("display", "none");
 		e1.append("rect")
-			.attrs({width: 960, height: 500, fill: "lightblue"});
+			.attrs({width: 960, height: 500, fill: "LightSteelBlue"});
 		var text1_2 = ["You let someone get away with discrimination!", "Sorry, you lose the game.", "Make better choices next time!"];
 
 		e1.append("image")
@@ -419,7 +425,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 				.text(text1_2[i]);
 			}
 		e1.append("rect")
-			.attrs({height: 60, width: 320, x: 350, y: 200, fill: "red"})
+			.attrs({height: 60, width: 320, x: 350, y: 200, fill: "wheat"})
 			.on("click", function(){ next("#e1", "#s0"); });
 		e1.append("text")
 			.attrs({x: 370, y: 230 })
@@ -430,7 +436,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 		//STEP 2, YOU CHOOSE TO REPORT, WHAT HAPPENS?
 		var s2 = rs.append("g").attr("id", "s2").attr("display", "none");
 		s2.append("rect")
-			.attrs({width: 960, height: 500, fill: "lightblue"});
+			.attrs({width: 960, height: 500, fill: "LightSteelBlue"});
 
 		s2.append("image")
 			.attr("xlink:href", "cya/youplatform.jpg")
@@ -449,7 +455,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 			}
 		s2.append("rect")
 			.on("click", function(){ next("#s2", "#e1"); })
-			.attrs({x:350, y:200, height: 60, width: 500, fill: "red"});
+			.attrs({x:350, y:200, height: 60, width: 500, fill: "wheat"});
 		s2.append("text")
 			.on("click", function(){ next("#s2", "#e1"); })
 			.attrs({x:370, y:230 })
@@ -458,7 +464,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 
 		s2.append("rect")
 			.on("click", function(){ next("#s2", "#s3_2"); })
-			.attrs({x:350, y: 300, height: 60, width: 500, fill:"green"});
+			.attrs({x:350, y: 300, height: 60, width: 500, fill:"wheat"});
 		s2.append("text")
 			.on("click", function(){ next("#s2", "#s3_2"); })
 			.attrs({x:370, y: 330 })
@@ -467,7 +473,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 
 		s2.append("rect")
 			.on("click", function(){ next("#s2", "#s3_1"); })
-			.attrs({x:350, y: 400, height: 60, width: 500, fill:"green"});
+			.attrs({x:350, y: 400, height: 60, width: 500, fill:"wheat"});
 		s2.append("text")
 			.on("click", function(){ next("#s2", "#s3_1"); })
 			.attrs({x:370, y: 430 })
@@ -478,7 +484,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 		//STEP 3_1, YOU HAVE CHOSEN TO COMPLAIN TO THE COMPANY
 		var s3_1 = rs.append("g").attr("id", "s3_1").attr("display", "none");
 		s3_1.append("rect")
-			.attrs({width: 960, height: 500, fill: "lightblue"});
+			.attrs({width: 960, height: 500, fill: "LightSteelBlue"});
 
 		s3_1.append("image")
 			.attr("xlink:href", "cya/ban.jpg")
@@ -492,7 +498,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 			}
 		s3_1.append("rect")
 			.on("click", function(){ next("#s3_1", "#s4_2"); })
-			.attrs({x:520, y:200, height: 60, width: 360, fill: "red"});
+			.attrs({x:520, y:200, height: 60, width: 360, fill: "wheat"});
 		s3_1.append("text")
 			.on("click", function(){ next("#s3_1", "#s4_2"); })
 			.attrs({x:540, y:230 })
@@ -501,7 +507,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 
 		s3_1.append("rect")
 			.on("click", function(){ next("#s3_1", "#s4_1"); })
-			.attrs({x: 520, y: 300, height: 60, width:360, fill:"green"});
+			.attrs({x: 520, y: 300, height: 60, width:360, fill:"wheat"});
 		s3_1.append("text")
 			.on("click", function(){ next("#s3_1", "#s4_1"); })
 			.attrs({ x:540, y: 330 })
@@ -512,7 +518,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 		//STEP 3_2, YOU HAVE CHOSEN TO REPORT A DIFFERENT BEHAVIOR
 		var s3_2 = rs.append("g").attr("id", "s3_2").attr("display", "none");
 		s3_2.append("rect")
-			.attrs({width: 960, height: 500, fill: "lightblue"});
+			.attrs({width: 960, height: 500, fill: "LightSteelBlue"});
 
 		s3_2.append("image")
 			.attr("xlink:href", "cya/tos.jpg")
@@ -527,7 +533,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 			}
 		s3_2.append("rect")
 			.on("click", function(){ next("#s3_2", "#s0"); })
-			.attrs({x:500, y:200, height: 60, width: 320, fill: "red"});
+			.attrs({x:500, y:200, height: 60, width: 320, fill: "wheat"});
 		s3_2.append("text")
 			.on("click", function(){ next("#s3_2", "#s0"); })
 			.attrs({ x:520, y:230 })
@@ -538,7 +544,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 		//STEP 4_1, YOU HAVE CHOSEN TO COMPLAIN MORE
 		var s4_1 = rs.append("g").attr("id", "s4_1").attr("display", "none");
 		s4_1.append("rect")
-			.attrs({width: 960, height: 500, fill: "lightblue"});
+			.attrs({width: 960, height: 500, fill: "LightSteelBlue"});
 
 		s4_1.append("image")
 			.attr("xlink:href", "cya/congrats.jpg")
@@ -553,7 +559,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 			}
 		s4_1.append("rect")
 			.on("click", function(){ next("#s4_1", "#s0"); })
-			.attrs({x: 500, y: 250, height: 60, width: 320, fill: "red"});
+			.attrs({x: 500, y: 250, height: 60, width: 320, fill: "wheat"});
 		s4_1.append("text")
 			.on("click", function(){ next("#s4_1", "#s0"); })
 			.attrs({ x:520, y: 280 })
@@ -564,7 +570,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 		//STEP 4_2 YOU HAVE CHOSEN TO DO NOTHING MORE
 		var s4_2 = rs.append("g").attr("id", "s4_2").attr("display", "none");
 		s4_2.append("rect")
-			.attrs({width: 960, height: 500, fill: "lightblue"});
+			.attrs({width: 960, height: 500, fill: "LightSteelBlue"});
 
 		s4_2.append("image")
 			.attr("xlink:href", "cya/try.jpg")
@@ -579,7 +585,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 			}
 		s4_2.append("rect")
 			.on("click", function(){ next("#s4_2", "#s0"); })
-			.attrs({x: 500, y: 250, height: 60, width: 320, fill: "red"});
+			.attrs({x: 500, y: 250, height: 60, width: 320, fill: "wheat"});
 		s4_2.append("text")
 			.on("click", function(){ next("#s4_2", "#s0"); })
 			.attrs({ x:520, y:280 })
@@ -593,22 +599,27 @@ In offline interactions, indicators of identity, reputation, and personality can
 		<a name="measurement"></a>
 		<h1> Measurement & Detection </h1>
 		<div class="page-padding"></div>
-		Blue Raters: 10<input id="blueSlider" type="range" min="10" max="200" value="50" oninput="updateNums(value, redSlider.value)">200<br/>
-		Red Raters: 10<input id="redSlider" type="range" min="10" max="200" value="50" oninput="updateNums(blueSlider.value, value)">200<br/>
+		Blue Raters: 10<input id="blueSlider" type="range" min="10" max="200" value="50" oninput="updateNums(value, redSlider.value)">200<div id="blueRaters"></div><br/>
+		Red Raters:  10<input id="redSlider" type="range" min="10" max="200" value="50" oninput="updateNums(blueSlider.value, value)">200<div id="redRaters"></div><br/>
 		<svg id = "md" width="960" height="500"></svg>
 		<script>
 		var md = d3.select("#md");
 
 		xScale = d3.scaleLinear().domain([0,650]).range([150, 700]);
 		xAxis = d3.axisBottom(xScale);
-		// yScale = d3.scaleLinear().domain([0,30]).range([0, width]);
-		// xAxis = d3.axisBottom(xScale);
+
 		md.append("text").attrs({x: 20, y: 100, stroke:"black"}).text("Ratings of Blue");
 		md.append("text").attrs({x: 20, y: 200, stroke:"black"}).text("Ratings of Red");
-		md.append("text").attrs({x: 20, y: 300, stroke:"black"}).text("Mean Rating");
+		// md.append("text").attrs({x: 20, y: 300, stroke:"black"}).text("Mean Rating");
 
 		function updateNums(blue, red){
+
 			d3.selectAll(".md").remove();
+
+			red = Number(red);
+			blue = Number(blue);
+			document.getElementById("blueRaters").innerHTML = "" + blue;
+			document.getElementById("redRaters").innerHTML = "" + red;
 
 			var ownDist = d3.randomNormal(500,50);
 			var otherDist = d3.randomNormal(400,100);
@@ -623,8 +634,8 @@ In offline interactions, indicators of identity, reputation, and personality can
 				var bR = otherDist();
 				blueOwn.push({id: i, x: bO, y: 100});
 				blueRed.push({id: i, x: bR, y: 200});
-				meanRating.push({x: bO, y: 300});
-				meanRating.push({x: rO, y: 300});
+				// meanRating.push({x: bO, y: 300});
+				// meanRating.push({x: bR, y: 300});
 			}
 
 			for (var i=0; i<red; i++){
@@ -632,11 +643,16 @@ In offline interactions, indicators of identity, reputation, and personality can
 				var rO = ownDist();
 				redBlue.push({id: i, x: rB, y: 100});
 				redOwn.push({id: i, x: rO, y: 200});
-				meanRating.push({x: rB, y: 300});
-				meanRating.push({x: bR, y: 300});
+				// meanRating.push({x: rB, y: 300});
+				// meanRating.push({x: rO, y: 300});
 			}
+			// imgExtent = d3.extent(blueOwn, function(d){ return d.x; });
+			// imgScale = d3.scaleLinear().domain([0,blue]).range([150, 600]);
+			// md.append("image")
+			// 	.attr("x", 100)
+			// 	.attr("y", imgScale)
+			// 	.attr("xlink:href", "normal.gif");
 
-			console.log(d3.mean(blueOwn))
 			md.selectAll("circle#bb").data(blueOwn).enter().append("circle")
 				.attr("cx", function(d){ return xScale(d.x); })
 				.attr("cy", function(d){ return d.y; })
@@ -656,25 +672,40 @@ In offline interactions, indicators of identity, reputation, and personality can
 				.attrs({id: "rr", class: "md", r: 5, fill: "red", opacity: 0.2});
 
 			//figure out what is happening here
-			md.selectAll("circle#all").data(meanRating).enter().append("circle")
-				.attrs(function(d){
-					if (d.x){
-						return {x: xScale(d.x), y: d.y};
-					}
-				})
-				// }"cx", function(d){
-				// 	console.log("original is " + d.x + " and scaled is " + xScale(d.x));
-				// 	return xScale(d.x); })
-				// .attr("cy", function(d){ return d.y; })
-				.attrs({id: "all", class: "mdCircle", r: 5, fill: "green", opacity: 0.2});
+			// md.selectAll("circle#all").data(meanRating).enter().append("circle")
+			// 	.attrs(function(d){
+			// 		if (d.x){
+			// 			return {x: xScale(d.x), y: d.y};
+			// 		}
+			// 	})
+			// 	// }"cx", function(d){
+			// 	// 	console.log("original is " + d.x + " and scaled is " + xScale(d.x));
+			// 	// 	return xScale(d.x); })
+			// 	// .attr("cy", function(d){ return d.y; })
+			// 	.attrs({id: "all", class: "mdCircle", r: 5, fill: "green", opacity: 0.2});
 
-			var redMean = (d3.mean(redOwn) + d3.mean(blueRed))/2
-			// console.log(redMean);
-			var blueMean = (d3.mean(blueOwn) + d3.mean(redBlue))/2
-			md.append("text").attrs({class: "md", x: 750, y: 100, stroke:"black"}).text("Average rating of blue: ");
-			md.append("text").attrs({class: "md", x: 750, y: 200, stroke:"black"}).text("Average rating of Red: ");
-			md.append("text").attrs({class: "md", x: 750, y: 300, stroke:"black"}).text("Mean Rating");
+			var rOsum = d3.sum(redOwn, function(d){ return d.x; });
+			var bRsum = d3.sum(blueRed, function(d){ return d.x; });
+			var bOsum = d3.sum(blueOwn, function(d){ return d.x; });
+			var rBsum = d3.sum(redBlue, function(d){ return d.x; });
+
+			var redMean = (rOsum/(red+blue)) + (bRsum/(red+blue));
+			var blueMean = (bOsum/(red+blue)) + (rBsum/(blue+red));
+
+			md.append("text").attrs({class: "md", x: 740, y: 100, stroke:"black"})
+				.text("Average rating of Blue: " + Math.round(blueMean * 100)/100);
+			md.append("text").attrs({class: "md", x: 740, y: 200, stroke:"black"})
+				.text("Average rating of Red: " + Math.round(redMean * 100)/100);
+			// md.append("text").attrs({class: "md", x: 750, y: 300, stroke:"black"})
+			// 	.text("Mean Rating: " + Math.round(overallMean * 100)/100);
+			// var binGenerator = d3.histogram()
+			// 	.domain(d3.extent(redOwn, function(d){ return d.x; }));
+			// var bins = binGenerator(redOwn);
+			// console.log(bins);
+
 		}
+		//add normal curves
+
 
 		updateNums(50, 50);
 		//make distribution lines if possible!!!
@@ -684,7 +715,7 @@ In offline interactions, indicators of identity, reputation, and personality can
 		// 	.attr("d", blueOwnLine)
 		// 	.attr("stroke", "blue");
 
-		md.append("g").call(xAxis).attr("transform", "translate(0,350)");
+		md.append("g").call(xAxis).attr("transform", "translate(0,250)");
 
 		</script>
 		<p>Finally, platforms may make independent efforts to detect the presence of bias and any potentially disparate effects of their facially neutral design decisions. Such measurement is a precondition to rigorous analysis of the systemic effects marginalized users may experience on a site, and borrows from offline analogues like the collection of voluntary demographic data in employment. Platforms might seek to collect demographic data from their users directly, or might infer it from other disclosed information. Platforms may also seek to detect bias itself in site activity using machine learning techniques.</p>
