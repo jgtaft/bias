@@ -1,0 +1,7 @@
+[
+  {"app":"bumble","categories":["location","facebook"]},
+  {"app":"jswipe","categories":["location","religion","facebook"]},
+  {"app":"tinder","categories":["location","facebook"]},
+  {"app":"grindr","categories":["location","gender"]},
+  {"app":"league","categories":["location","education","facebook"]}
+]
