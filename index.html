@@ -11,19 +11,24 @@
 <style>
 
 .arc text {
-font: 50px sans-serif;
-text-anchor: middle;
-fill:white;
+	font: 20px sans-serif;
+	/*text-anchor: middle;*/
+	fill:black;
 }
 
 .arc path {
-stroke: #fff;
+	stroke: #fff;
+}
+
+.arc path:hover {
+	fill-opacity: .7;
+	cursor: pointer;
 }
 
 #rs text {
-stroke: black;
-font-size: 30;
-alignment-baseline: middle;
+	stroke: black;
+	font-size: 30;
+	alignment-baseline: middle;
 }
 
 #rs rect:hover {
@@ -41,8 +46,8 @@ alignment-baseline: middle;
 }
 
 #curvepath{
-		fill: none;
-		stroke-width: 2px;
+	fill: none;
+	stroke-width: 2px;
 }
 
 </style>
@@ -108,8 +113,9 @@ alignment-baseline: middle;
 	    height = +diversity.attr("height"),
 	    radius = Math.min(width, height) / 2;
 
-	var color = d3.scaleOrdinal(["#5DA5DA", "#FAA43A", "#60BD68", "#F17CB0", "#B276B2", "#DECF3F", "#ff8c00"]);
-	var gendercolor = d3.scaleOrdinal(["#5DA5DA","#F17CB0"]);
+	var racecolor = ["#5DA5DA", "#60BD68", "#FAA43A", "#F17CB0", "#B276B2", "#DECF3F", "#ff8c00"];
+	var color = d3.scaleOrdinal(racecolor);
+	var gendercolor = d3.scaleOrdinal(["#60BD68","#DECF3F"]);
 
 	var pie = d3.pie()
 	    .sort(null)
@@ -120,8 +126,8 @@ alignment-baseline: middle;
 	    .innerRadius(0);
 
 	var label = d3.arc()
-	    .outerRadius(radius - 40)
-	    .innerRadius(radius - 40);
+	    .outerRadius(radius-40)
+	    .innerRadius(0);
 
 	//overall svg for race pie charts
 	var race = diversity.append("g").attr("id", "race");
@@ -145,9 +151,10 @@ alignment-baseline: middle;
 	      .attr("fill", function(d) { return color(d.data.Race); });
 
 	  arc.append("text")
-	      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
+	      .attr("transform", function(d) {
+					return "translate(" + label.centroid(d) + ")"; })
 	      .attr("dy", "0.35em")
-	      .text(function(d) { return d.data.Percentage; });
+	      .text(function(d) { return d.data.Percentage + "%"; });
 	});
 
 	//make google race pie chart
@@ -171,7 +178,7 @@ alignment-baseline: middle;
 	  arc.append("text")
 	      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
 	      .attr("dy", "0.35em")
-	      .text(function(d) { return d.data.Percentage; });
+	      .text(function(d) { return d.data.Percentage + "%"; });
 	});
 
 	//make facebook race pie chart
@@ -195,17 +202,17 @@ alignment-baseline: middle;
 	  arc.append("text")
 	      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
 	      .attr("dy", "0.35em")
-	      .text(function(d) { return d.data.Percentage; });
+	      .text(function(d) { return d.data.Percentage + "%"; });
 	});
 
 	race.append("text")
-	 .attrs({x:160, y: 80, stroke: "black"})
+	 .attrs({x:160, y: 60, fill: "black"})
 		.text("Apple");
 	race.append("text")
-		.attrs({x:450, y: 80, stroke: "black"})
+		.attrs({x:450, y: 60, fill: "black"})
 		.text("Facebook");
 	race.append("text")
-		.attrs({x:740, y: 80, stroke: "black"})
+		.attrs({x:740, y: 60, fill: "black"})
 		.text("Google");
 
 
@@ -233,7 +240,7 @@ alignment-baseline: middle;
 	  arc.append("text")
 	      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
 	      .attr("dy", "0.35em")
-	      .text(function(d) { return d.data.Percentage; });
+	      .text(function(d) { return d.data.Percentage + "%"; });
 	});
 
 
@@ -258,7 +265,7 @@ alignment-baseline: middle;
 	  arc.append("text")
 	      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
 	      .attr("dy", "0.35em")
-	      .text(function(d) { return d.data.Percentage; });
+	      .text(function(d) { return d.data.Percentage + "%"; });
 	});
 
 
@@ -283,7 +290,7 @@ alignment-baseline: middle;
 	  arc.append("text")
 	      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
 	      .attr("dy", "0.35em")
-	      .text(function(d) { return d.data.Percentage; });
+	      .text(function(d) { return d.data.Percentage + "%"; });
 	});
 
 	gender.append("text")
@@ -305,6 +312,297 @@ alignment-baseline: middle;
 		<a name="composition"></a>
 		<h1> Community Composition </h1>
 		<div class="page-padding"></div>
+		<svg id="community" height="600" width="1000"></svg>
+	<script>
+	var community = d3.select("#community");
+
+	/// category text
+
+	community.append("text")
+		.attr("x", 190)
+		.attr("y", 45)
+		.attr("fill", "black")
+		.text("Dating Apps");
+
+	community.append("text")
+		.attr("x", 640)
+		.attr("y", 45)
+		.attr("fill", "black")
+		.text("Community Requirements");
+
+
+	///Community Circles
+
+	community.append("circle")
+				.attr("id","circle")
+				.attr("r",35)
+				.attr("cx", 750)
+				.attr("cy", 100)
+				.attr("fill", "#5DA5DA");
+
+	community.append("circle")
+				.attr("id","circle")
+				.attr("r",35)
+				.attr("cx", 750)
+				.attr("cy", 200)
+				.attr("fill", "#60BD68");
+
+	community.append("circle")
+				.attr("id","circle")
+				.attr("r",35)
+				.attr("cx", 750)
+				.attr("cy", 300)
+				.attr("fill", "#FAA43A");
+
+
+	community.append("circle")
+				.attr("id","circle")
+				.attr("r",35)
+				.attr("cx", 750)
+				.attr("cy", 400)
+				.attr("fill", "#F17CB0");
+
+	community.append("circle")
+				.attr("id","circle")
+				.attr("r",35)
+				.attr("cx", 750)
+				.attr("cy", 500)
+				.attr("fill", "#B276B2");
+
+	////images
+
+	community.append("image")
+				.attr("xlink:href", "vis2/bumble.png")
+				.attr("x", 705)
+				.attr("y", 205)
+				.attr("transform","scale(.3)");
+
+	community.append("image")
+				.attr("xlink:href", "vis2/jswipe.png")
+				.attr("x", 705)
+				.attr("y", 530)
+				.attr("transform","scale(.3)");
+
+	community.append("image")
+				.attr("xlink:href", "vis2/tinder.png")
+				.attr("x", 705)
+				.attr("y", 865)
+				.attr("transform","scale(.3)");
+
+	community.append("image")
+				.attr("xlink:href", "vis2/league.png")
+				.attr("x", 2250)
+				.attr("y", 3735)
+				.attr("transform","scale(.1)");
+
+	community.append("image")
+				.attr("xlink:href", "vis2/grindr.png")
+				.attr("x", 705)
+				.attr("y", 1565)
+				.attr("transform","scale(.3)");
+	///Text for circles
+
+	community.append("text")
+		.attr("x", 830)
+		.attr("y", 105)
+		.attr("fill", "black")
+		.text("Location");
+
+	community.append("text")
+		.attr("x", 830)
+		.attr("y", 205)
+		.attr("fill", "black")
+		.text("Gender");
+
+	community.append("text")
+		.attr("x", 830)
+		.attr("y", 305)
+		.attr("fill", "black")
+		.text("Social Media Account");
+
+	community.append("text")
+		.attr("x", 830)
+		.attr("y", 405)
+		.attr("fill", "black")
+		.text("Religion");
+
+	community.append("text")
+		.attr("x", 830)
+		.attr("y", 505)
+		.attr("fill", "black")
+		.text("Education");
+
+
+
+
+
+	///text for images
+
+	community.append("text")
+		.attr("x", 100)
+		.attr("y", 105)
+		.attr("fill", "black")
+		.text("Bumble");
+
+	community.append("text")
+		.attr("x", 100)
+		.attr("y", 205)
+		.attr("fill", "black")
+		.text("Jswipe");
+
+	community.append("text")
+		.attr("x", 100)
+		.attr("y", 305)
+		.attr("fill", "black")
+		.text("Tinder");
+
+	community.append("text")
+		.attr("x", 100)
+		.attr("y", 405)
+		.attr("fill", "black")
+		.text("The League");
+
+	community.append("text")
+		.attr("x", 100)
+		.attr("y", 505)
+		.attr("fill", "black")
+		.text("Grindr");
+
+
+	///lines connecting apps to community structure
+
+	///Bumble
+	community.append("line")
+			.attr("stroke", "black")
+			.attr("stroke-width", "4")
+			.attr("id", "bumblelocation")
+			.attr("x1", 288)
+			.attr("y1", 100)
+			.attr("x2", 716)
+			.attr("y2", 100);
+
+	community.append("line")
+			.attr("stroke", "black")
+			.attr("stroke-width", "4")
+			.attr("id", "bumblefacebook")
+			.attr("x1", 288)
+			.attr("y1", 100)
+			.attr("x2", 716)
+			.attr("y2", 300);
+
+	///Jswipe
+	community.append("line")
+			.attr("stroke", "black")
+			.attr("stroke-width", "4")
+			.attr("id", "jswipelocation")
+			.attr("x1", 269)
+			.attr("y1", 200)
+			.attr("x2", 716)
+			.attr("y2", 100);
+
+	community.append("line")
+			.attr("stroke", "black")
+			.attr("stroke-width", "4")
+			.attr("id", "jswipefacebook")
+			.attr("x1", 269)
+			.attr("y1", 200)
+			.attr("x2", 716)
+			.attr("y2", 300);
+
+	community.append("line")
+			.attr("stroke", "black")
+			.attr("stroke-width", "4")
+			.attr("id", "jswipejewish")
+			.attr("x1", 269)
+			.attr("y1", 200)
+			.attr("x2", 716)
+			.attr("y2", 400);
+
+	///tinder
+	community.append("line")
+			.attr("stroke", "black")
+			.attr("stroke-width", "4")
+			.attr("id", "tinderlocation")
+			.attr("x1", 288)
+			.attr("y1", 300)
+			.attr("x2", 716)
+			.attr("y2", 100);
+
+	community.append("line")
+			.attr("stroke", "black")
+			.attr("stroke-width", "4")
+			.attr("id", "tinderfacebook")
+			.attr("x1", 288)
+			.attr("y1", 300)
+			.attr("x2", 716)
+			.attr("y2", 300);
+
+	///the league
+	community.append("line")
+			.attr("stroke", "black")
+			.attr("stroke-width", "4")
+			.attr("id", "leaguelocation")
+			.attr("x1", 275)
+			.attr("y1", 400)
+			.attr("x2", 716)
+			.attr("y2", 100);
+
+	community.append("line")
+			.attr("stroke", "black")
+			.attr("stroke-width", "4")
+			.attr("id", "leaguefacebook")
+			.attr("x1", 275)
+			.attr("y1", 400)
+			.attr("x2", 716)
+			.attr("y2", 500);
+
+	community.append("line")
+			.attr("stroke", "black")
+			.attr("stroke-width", "4")
+			.attr("id", "leagueivyleague")
+			.attr("x1", 275)
+			.attr("y1", 400)
+			.attr("x2", 716)
+			.attr("y2", 300);
+
+
+
+	///grindr
+
+	community.append("line")
+			.attr("stroke", "black")
+			.attr("stroke-width", "4")
+			.attr("x1", 279)
+			.attr("y1", 500)
+			.attr("x2", 716)
+			.attr("y2", 100);
+
+	community.append("line")
+			.attr("stroke", "black")
+			.attr("stroke-width", "4")
+			.attr("x1", 279)
+			.attr("y1", 500)
+			.attr("x2", 716)
+			.attr("y2", 200);
+
+		// d3.json("vis2/vis2.json", function(error, data) {
+		// 	console.log(data);
+		//
+		// 	var community = d3.select("#community");
+		//
+		// 	var applist = ["bumble", "jswipe", "tinder", "league", "grindr"];
+		// 	var colors = ["#5DA5DA", "#60BD68", "#FAA43A", "#F17CB0", "#B276B2"];
+		// 	for(var i=0; i<applist.length; i++){
+		// 		community.append("image")
+		// 			.attr("xlink:href", applist[i] + ".png")
+		// 			.attr("x")
+		// 	}
+		// 	community.selectAll("image").data(data).enter().append("image")
+		// 		.attr("xlink:href", )
+		//
+		// });
+
+	</script>
 
 		<p>Platforms may implement rules or expectations about the characteristics members must meet in order to be included in the pool of users. Such restrictions may be based on membership in a demographic category, geographic proximity, shared professions or interests, or other limitations—and may be enforced through self-selection, norm formation, credentialing, invitation, or independent vetting. Restricting access may help to cultivate a baseline level of affinity, homogeneity, connection, or trust among users that may militate against bias in their interactions. In particular, users may refrain from reliance on stereotypes about secondary characteristics because negative associations based on those characteristics are neutralized by membership on the platform (and the associated characteristics it imparts). At the same time, understanding a platform to be “exclusive” in some way may have the opposite effect by encouraging biased judgments: it may embolden users to rely even more upon stereotypes in their interactions on the platform, potentially based on the normalization of stereotyping behaviors or extensive focus on elitism.</p>
 
