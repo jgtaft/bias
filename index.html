@@ -50,6 +50,89 @@
 	stroke-width: 2px;
 }
 
+body { font-family: 'Raleway', Helvetica; font-weight: 300; padding: 20px;}
+th { text-align: middle; }
+th, td { padding: 0 1em 0.5ex 0;}
+th.center, td.center { text-align: center; }
+
+td.gay span {
+	display:none;
+}
+
+td.straight span {
+	display:none;
+}
+
+td.gay:after {
+	color: white;
+	background-color: #FFBF46;
+	display: block;
+	width: 25px;
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	content: '';
+	font-size: 20px;
+}
+
+td.straight:after {
+	color: white;
+	background-color: #54C6EB;
+	display: block;
+	width: 25px;
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	content: '';
+	font-size: 20px;
+}
+
+td.green span {
+	display: none;
+}
+
+td.green:after {
+	color: white;
+	background-color: #70A9A1;
+	display: block;
+	width: 150px;
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	content: '\2714';
+	font-size: 40px;
+}
+
+td.red span{
+	display: none;
+}
+
+td.red:after {
+	color: white;
+	background-color: #C14953;
+	display: block;
+	width: 150px;
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;;
+	content: '\2716';
+	font-size: 40px;
+}
+
+span.blue {
+
+	color: black;
+	opacity:.75;
+	background-color: #FFBF46;
+	display: block;
+	width: 150px;
+	height: 50px;
+	font-size: 25px;
+	text-align: center;
+	border-radius: 5px;
+}
+
+
 </style>
 </head>
 <body>
@@ -66,16 +149,16 @@
 
 	<div id="navwrap">
 		<div id="nav">
-			<a href="#company" class="button">Company-Level Diversity & Inclusion</a>
+			<a href="#company" class="button">Corporate Diversity</a>
 			<a href="#composition" class="button">Community Composition</a>
-			<a href="#policies" class="button">Community Policies & Messaging </a>
+			<a href="#policies" class="button">Policies & Messaging </a>
 			<a href="#prompting" class="button">Prompting & Priming</a>
-			<a href="#howlearn" class="button">How Users Learn About One Another</a>
+			<a href="#howlearn" class="button">How Users Connect</a>
 		</div>
 		<div id="nav">
-			<a href="#whatlearn" class="button">What User Learn About One Another </a>
-			<a href="#reputation" class="button">Reputation, Reliability & Ratings</a>
-			<a href="#data" class="button">Data Quality & Validation</a>
+			<a href="#whatlearn" class="button">What Users Can Learn</a>
+			<a href="#reputation" class="button">Reputation & Ratings</a>
+			<a href="#data" class="button">Data Validation</a>
 			<a href="#reporting" class="button">Reporting & Sanctioning </a>
 			<a href="#measurement" class="button">Measurement & Detection </a>
 		</div>
@@ -305,7 +388,6 @@
 
 	</script>
 
-		<p>Some companies seek to address bias on platforms by reforming the company itself (i.e., its organizational makeup and internal policies). Platform companies may seek to increase the representation of underrepresented groups, may offer training to their engineering teams and other members of their workforce about implicit bias and its effects, and may devote additional personnel and internal resources to the elimination of bias. These strategies assume a sort of “trickle-down” approach to bias mitigation: the presence of more diverse company personnel and explicit training about the problem of implicit bias may attune companies to disparate effects of their design decisions that might not have come to the fore otherwise.</p>
 	</div> <!--END page1-->
 
 	<div id="page2" class="slide">
@@ -604,24 +686,170 @@
 
 	</script>
 
-		<p>Platforms may implement rules or expectations about the characteristics members must meet in order to be included in the pool of users. Such restrictions may be based on membership in a demographic category, geographic proximity, shared professions or interests, or other limitations—and may be enforced through self-selection, norm formation, credentialing, invitation, or independent vetting. Restricting access may help to cultivate a baseline level of affinity, homogeneity, connection, or trust among users that may militate against bias in their interactions. In particular, users may refrain from reliance on stereotypes about secondary characteristics because negative associations based on those characteristics are neutralized by membership on the platform (and the associated characteristics it imparts). At the same time, understanding a platform to be “exclusive” in some way may have the opposite effect by encouraging biased judgments: it may embolden users to rely even more upon stereotypes in their interactions on the platform, potentially based on the normalization of stereotyping behaviors or extensive focus on elitism.</p>
-
 	</div> <!--END page2-->
 
 	<div id="page3" class="slide">
 		<a name="policies"></a>
-		<h1> Community Policies & Messaging </h1>
-		<div class="page-padding"></div>
+	<h1> Community Policies and Messaging</h1>
+	<h1> Sexual Health & Dating Apps</h1>
+	<h2> A Design Scorecard</h2>
+	<div id='scores'></div>
+	<div class="page-padding"></div>
+	<script>
 
+	d3.tsv('sex.tsv', function (error,data) {
 
-		<p>Community guidelines and terms of use may explicitly caution users against interacting on the platform in ways that exhibit bias against other users. Some platforms style such policies as “commitments” or “pledges” and incentivize or require users to engage directly with them; others require platform members to complete training on unconscious bias. Community guidelines may serve to cultivate norms for behavior on a platform, and also can establish bases for imposing sanctions if those norms are violated. Community policies can also be communicated less directly through messaging and imagery both on and off the platform, including site text/imagery and external advertising.</p>
+	  function tabulate(data, columns) {
+			var table = d3.select('#scores').append('table')
+			var thead = table.append('thead')
+			var	tbody = table.append('tbody');
+
+			// append the header row
+			thead.append('tr')
+			  .selectAll('th')
+			  .data(columns).enter()
+			  .append('th')
+			    .text(function (column) { return column; });
+
+			// create a row for each object in the data
+			var rows = tbody.selectAll('tr')
+			  .data(data)
+			  .enter()
+			  .append('tr');
+
+			var cells = rows.selectAll('td')
+			  .data(function(row) {
+			  	//delete row['smm'];
+			  	return Object.values(row);
+			  })
+			  .enter()
+			  .append('td')
+			  .classed('green', function(v) { return v == '1'; })
+			  .classed('red', function(v) { return v == '0'; })
+			  .classed('gay', function(v) {return v == '2'})
+			  .classed('straight', function(v) {return v =='3'})
+			  .append('span')
+			  .text(function(a) {
+			  	return a;
+			  });
+
+		  return table;
+		};
+		// render the table
+		tabulate(data, ["Platform", "HIV Status", "Last Tested Date", "Safety Practices", "Resources"]); });
+
+	</script>
 	</div> <!--END page3-->
 
 	<div id="page4" class="slide">
 		<a name="prompting"></a>
 		<h1> Prompting & Priming </h1>
 		<div class="page-padding"></div>
-		<p>Platforms may use “just-in-time” prompts to induce users to reflect on their behavior during a site interaction, often by providing users with interstitial information or a pop-up dialog that must be acceded to before proceeding with a communication or transaction. These measures may remind users to abide by community guidelines to which they have previously agreed, hence making anti-bias commitments more top-of-mind. Such prompts may be triggered to appear only when likely biased behavior is detected, by default for all interactions, or when some other conditions are met.</p>
+		<p>Prompts and primes are used by designers to make sure people are on their best behavior when they're using a site. But it's easy to prime or prompt the wrong kind of behavior if you're not careful.</p>
+		<svg id="pp"></svg>
+	<script>
+		var height = 720;
+		var width = 960;
+		var prompt = d3.select("#pp").attrs({height: height, width: width});
+
+		//green blue yellow red
+		var colors = ["#2ecc71", "#3498db", "#f1c40f", "#e74c3c"];
+
+		prompt.append("text").attrs({x: width/2, y: 40, fill: "black", 'font-size':30})
+			.attr("text-anchor", "middle")
+			.text("What kinds of prompts and primes can designers use?");
+
+		prompt.append("text").attrs({x: width/2, y: 80, fill: "black", 'font-size':30})
+			.attr("text-anchor", "middle")
+			.text("Early warning")
+		prompt.append("text").attrs({x: width/2, y: 100, fill: "black", 'font-size':15})
+			.attr("text-anchor", "middle")
+			.text("These prompts show up when a user opens an app.")
+
+		prompt.append("text").attrs({x: width/2, y: height/2 + 270, fill: "black", 'font-size':30})
+			.attr("text-anchor", "middle")
+			.text("Just-in-time");
+		prompt.append("text").attrs({x: width/2, y: height/2 + 290, fill: "black", 'font-size':15})
+			.attr("text-anchor", "middle")
+			.text("These prompts appear just before or after the user acts.");
+
+		prompt.append("text").attrs({x: width/2-250, y: height/2, fill: "black", 'font-size':30})
+			.attr("text-anchor", "end")
+			.text("Subtle");
+		prompt.append("text").attrs({x: width/2-250, y: height/2+20, fill: "black", 'font-size':15})
+			.attr("text-anchor", "end")
+			.text("These prompts aren't very noticeable.");
+
+		prompt.append("text").attrs({x: width/2+250, y: height/2, fill: "black", 'font-size':30})
+			.attr("text-anchor", "start")
+			.text("Obvious");
+		prompt.append("text").attrs({x: width/2+250, y: height/2+20, fill: "black", 'font-size':15})
+			.attr("text-anchor", "start")
+			.text("These prompts are easy to see.");
+
+		prompt.append("line")
+			.attrs({x1: width/2, y1:120, x2: width/2, y2: height-120, stroke: "black"});
+		prompt.append("line")
+			.attrs({x1: width/2-240, y1: height/2, x2: width/2+240, y2: height/2, stroke: "black"});
+
+		function parseline(line){
+			line.so = Number(line.so);
+			line.ej = Number(line.ej);
+			return line;
+		}
+
+		d3.csv("priming/priming.csv", parseline, function(error, data){
+
+			var soScale = d3.scaleLinear().domain([-1,1]).range([width/2-110, width/2+110]);
+			var ejScale = d3.scaleLinear().domain([-1,1]).range([height/2+110, height/2-110]);
+
+			var squareX = d3.scaleLinear().domain([-1,1]).range([width/2-230, width/2]);
+			var squareY = d3.scaleLinear().domain([-1,1]).range([height/2, height/2-230]);
+
+		prompt.selectAll("rect").data(data).enter().append("rect")
+			.attrs(function(d){
+				return {x:squareX(d.so), y:squareY(d.ej), fill: d.color};
+			})
+			.attrs({height: 230, width: 230,  opacity: 0.5, id: "ppsquare"})
+			// .on("mouseover", function(d){
+			// 	prompt.append("text")
+			// })
+			.on("click", function(d){
+				d3.selectAll("#ppGroup").remove();
+				showImage(d.Filename, d.color);
+			});
+
+		prompt.selectAll("text#app").data(data).enter().append("text")
+			.attrs(function(d){
+				return {x:soScale(d.so), y:ejScale(d.ej)};
+			})
+			.attrs({fill:"black", 'font-size':35, 'text-anchor':"middle", 'alignment-baseline':"middle"})
+			.text(function(d){ return d.App; })
+			.on("click", function(d){
+				d3.selectAll("#ppGroup").remove();
+				showImage(d.Filename, d.color);
+			});
+		})
+
+		function showImage(filename, color){
+			var g = prompt.append("g").attr("id", "ppGroup")
+				.on("click", function(){
+					d3.selectAll("#ppGroup").remove();
+				});
+			g.append("rect")
+				.attrs({x:90, y:90, height: 600, width: 600, fill: color});
+			g.append("image")
+				.attr("xlink:href", "priming/" + filename)
+				.attrs({id: "ppImg", x:100, y:100});
+			g.append("image")
+				.attr("xlink:href", "priming/close.png")
+				.attrs({x: 657, y: 93, width:30});
+		}
+
+		// function poptext(){
+		//
+		// }
+	</script>
 	</div> <!--END page1-->
 
 	<div id="page5" class="slide">
