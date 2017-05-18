@@ -17,7 +17,7 @@
 		.style("background-color", null)
 		.style("color", null);
 		var page = "#page" + slideNo;
-		var slide = "#s" + slideNo;
+		var slide = "#sl" + slideNo;
 		d3.select(page)
 		.style("display", "block");
 		d3.select(slide)
@@ -38,16 +38,16 @@
 	</div>
 	<div id="navwrap">
 		<div id="nav">
-			<a href="#s1" id="s1" class="slideButton" onclick="slideShow(1);"> Corporate Diversity</a>
-			<a href="#s2" id="s2" class="slideButton" onclick="slideShow(2);">Community Composition</a>
-			<a href="#s3" id="s3" class="slideButton" onclick="slideShow(3);">Policies & Messaging </a>
-			<a href="#s4" id="s4" class="slideButton" onclick="slideShow(4);">Prompting & Priming</a>
+			<a href="#s1" id="sl1" class="slideButton" onclick="slideShow(1);"> Corporate Diversity</a>
+			<a href="#s2" id="sl2" class="slideButton" onclick="slideShow(2);">Community Composition</a>
+			<a href="#s3" id="sl3" class="slideButton" onclick="slideShow(3);">Policies & Messaging </a>
+			<a href="#s4" id="sl4" class="slideButton" onclick="slideShow(4);">Prompting & Priming</a>
 		</div>
 		<div id="nav">
-			<a href="#whatlearn" id="s5" class="slideButton" onclick="slideShow(5);">What Users Can Learn</a>
-			<a href="#reputation" id="s6" class="slideButton" onclick="slideShow(6);">Reputation & Ratings</a>
-			<a href="#reporting" id="s7" class="slideButton" onclick="slideShow(7);">Reporting & Sanctioning </a>
-			<a href="#measurement" id="s8" class="slideButton" onclick="slideShow(8);">Measurement & Detection </a>
+			<a href="#s5" id="sl5" class="slideButton" onclick="slideShow(5);">What Users Can Learn</a>
+			<a href="#s6" id="sl6" class="slideButton" onclick="slideShow(6);">Reputation & Ratings</a>
+			<a href="#s7" id="sl7" class="slideButton" onclick="slideShow(7);">Reporting & Sanctioning </a>
+			<a href="#s8" id="sl8" class="slideButton" onclick="slideShow(8);">Measurement & Detection </a>
 		</div>
 	</div>
 <div id="page-wrap">
