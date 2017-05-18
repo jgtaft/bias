@@ -213,7 +213,9 @@ display: inline-table;
 		<h2>Designing Against Bias & Discrimination In User-to-User Platforms</h2>
 	</div>
 	<div id="subheader">
-		<p>The goal of the project is to document a range of design strategies that platforms can use to mediate interactions between their users, specifically with respect to addressing the effects of implicit/explicit bias in interactions. By restructuring information flows within exchanges (e.g., by limiting visible information about a transacting party; by highlighting or reframing information via dynamic UI; by requiring more user input in certain situations), platforms can use design strategies to mitigate against biased decision-making by users that may result, in aggregate, in systemic discrimination against certain protected groups.<br><br>Select a button below to see an example of a strategy in use.</p>
+		<p>What kind of design strategies can platforms use to mediate interactions between users?
+		<br/><br/>How can those design strategies cause or stop harmful bias or discrimination?
+		<br/><br/>Select a button below to see an example of a strategy in use.</p>
 	</div>
 	<div id="navwrap">
 		<div id="nav">
@@ -233,9 +235,9 @@ display: inline-table;
 	<div id="page1" class="slide" style="display: none;">
 		<a name="company"></a>
 		<h1> Company-Level Diversity & Inclusion </h1>
-		<div class="page-padding"></div>
-
 		<h2>Diversity of Apple, Facebook, and Google's Technical Workforce</h2>
+		<p>Apple, Facebook, and Google are leaders in the field of technology. They set company standards for the technical workforce. However, lack of internal workforce diversity might mean that these companies are less likely to consider implicit bias towards underrepresented groups when designing platforms.</p>
+
 		<div id="diversebuttons">
 			<a class="button" onclick="showRace()">Ethnicity </a>
 			<a class="button" onclick="showGender()">Gender</a>
@@ -474,7 +476,8 @@ display: inline-table;
 	<div id="page2" class="slide" style="display: none">
 		<a name="composition"></a>
 		<h1> Community Composition </h1>
-		<div class="page-padding"></div>
+		<h2>The Case of Dating Apps</h2>
+		<p>Platforms can have rules or expectations about what kind of people are expected or allowed to use their apps or sites. These online dating apps have explicit or implicit requirements of their users. While some apps might target people of specific religions, genders, or educational backgrounds, others use features like connections to social media sites to ensure that users are on their best behavior.</p>
 		<svg id="community" height="600" width="1000"></svg>
 		<script>
 		var community = d3.select("#community");
@@ -626,7 +629,7 @@ display: inline-table;
 
 		community.append("text")
 			.attrs({x: 190, y: 125, 'text-anchor': "end", id: "explanation"})
-			.text("Women send the first message.");
+			.text("Women message first.");
 		community.append("text")
 			.attrs({x: 190, y: 225, 'text-anchor': "end", id: "explanation"})
 			.text("Targeted at Jewish daters.");
@@ -764,7 +767,6 @@ display: inline-table;
 	<h1> Sexual Health & Dating Apps</h1>
 	<h2> A Design Scorecard</h2>
 	<div id='scores'></div>
-	<div class="page-padding"></div>
 	<script>
 
 	d3.tsv('sex.tsv', function (error,data) {
@@ -814,16 +816,12 @@ display: inline-table;
 	<div id="page4" class="slide" style="display: none">
 		<a name="prompting"></a>
 		<h1> Prompting & Priming </h1>
-		<div class="page-padding"></div>
-		<p>Prompts and primes are used by designers to make sure people are on their best behavior when they're using a site. But it's easy to prime or prompt the wrong kind of behavior if you're not careful.</p>
+		<p>Prompts and primes are used by designers to make sure people are on their best behavior when they're using a site. But it's easy to prime or prompt the wrong kind of behavior if you're not careful. Click on an app or site to see what its designers have done that might cause or stop bias.</p>
 		<svg id="pp"></svg>
 	<script>
 		var height = 720;
 		var width = 960;
 		var prompt = d3.select("#pp").attrs({height: height, width: width});
-
-		// //green blue yellow red
-		// var colors = ["#2ecc71", "#3498db", "#f1c40f", "#e74c3c"];
 
 		prompt.append("text").attrs({x: width/2, y: 40, fill: "black", 'font-size':30})
 			.attr("text-anchor", "middle")
@@ -881,9 +879,6 @@ display: inline-table;
 				return {x:squareX(d.so), y:squareY(d.ej), fill: d.color};
 			})
 			.attrs({height: 230, width: 230,  opacity: 0.5, id: "ppsquare"})
-			// .on("mouseover", function(d){
-			// 	prompt.append("text")
-			// })
 			.on("click", function(d){
 				d3.selectAll("#ppGroup").remove();
 				showImage(d.Filename, d.color, d.App);
@@ -969,12 +964,8 @@ display: inline-table;
 			g.append("image")
 				.attr("xlink:href", "priming/close.png")
 				.attrs({x: 737, y: 73, width:30});
-
 		}
 
-		// function poptext(){
-		//
-		// }
 	</script>
 	</div> <!--END page1-->
 
@@ -983,10 +974,11 @@ display: inline-table;
 		<a name="whatlearn"></a>
 		<h1> What Users Learn About One Another </h1>
 		<h1> The Visible Hand </h1>
-		<h2> In online marketplaces, black sellers do worse than white sellers on a variety of market outcomes: </h2>
-
+		<h2> Outcomes for black sellers are worse than white sellers in online marketplaces: </h2>
+		<p>If you walked into a store to buy a brand-new Apple iPod, would you be less likely to buy it, or want to pay less for it, if it were presented by a salesperson who was black rather than white?<br/><br/>
+		Transpose that shopping experience to Craigslist, and that sums up how the average American behaves, according to newly published research co-authored by University of Virginia professor Jennifer Doleac.<br/><br/>
+		Results of the study showed that black sellers did worse than white sellers on a variety of metrics:</p>
 		<div id="hands"></div>
-		<div class="page-padding"></div>
 		<script>
 
 		var raceData;
@@ -1004,7 +996,6 @@ display: inline-table;
 		      baselineredux = baseline - (baseline * differential);
 
 		      var handPath = "M216.328,133.369c17.025,0,27.393,13.896,27.393,30.922l-0.057,151.286c0,4.267,3.457,7.716,7.727,7.716c4.263,0,7.72-3.45,7.72-7.716l-0.048-248.82c0-17.022,13.803-30.821,30.83-30.821c17.023,0,30.828,13.799,30.828,30.821l0.04,236.134c0,4.844,3.917,8.76,8.757,8.76c4.833,0,8.757-3.917,8.757-8.76l0.008-272.059c0-17.033,13.8-30.832,30.828-30.832c17.028,0,30.825,13.799,30.825,30.832l0.223,269.056c0,4.387,3.553,7.936,7.938,7.936c4.244,0,7.668-3.326,7.893-7.51c0.016,0.003,0.045-227.849,0.045-227.849c0-17.025,13.793-30.825,30.818-30.825s30.83,13.799,30.83,30.825l0.217,333.124c0,4.75,3.854,8.606,8.604,8.606s8.6-3.856,8.6-8.606l0.145-118.66c0.008-17.029,13.811-30.821,30.836-30.817c17.023,0,30.82,13.807,30.82,30.838l-0.078,205.47c-2.617,26.062-76.139,140.179-103.217,144.849v70.38c0,22.171-17.971,40.132-40.135,40.132H278.156c-22.167,0-40.139-17.961-40.139-40.132v-76.289c-43.353-32.479-47.14-172.27-47.14-175.051V161.983C190.877,144.959,202.018,133.369,216.328,133.369z";
-
 
 		      rowcontainer = d3.select("#hands").append("div").attr("id", "rowcontainer");
 		      handcontainer = rowcontainer.append("div").attr("id", "handcontainer");
@@ -1136,8 +1127,8 @@ display: inline-table;
 	<div id="page9" class="slide" style="display: none">
 		<a name="reporting"></a>
 		<h1> Reporting & Sanctioning </h1>
-		<div class="page-padding"></div>
 		<h2> Reporting Bias: A <i>Choose Your Own Adventure</i> Game </h2>
+		<p>Reporting or flagging tools can be a powerful weapon against overt discrimination. But many platforms don't include this option by default. This game walks you through the process of reporting bias.</p>
 
 <svg id="rs" width="960" height="500"></svg>
 
@@ -1386,7 +1377,6 @@ display: inline-table;
 <div id="page10" class="slide" style="display: none">
 	<a name="measurement"></a>
 	<h1> Measurement & Detection </h1>
-	<div class="page-padding"></div>
 	<p>People are known to rate others from their own subgroups better than they do people from other groups. Try adjusting the number of people in the blue group and red group to see how the overall ratings for each group changes. </p>
 	<p>Blue Raters: 10<input id="blueSlider" type="range" min="10" max="200" value="50" oninput="updateNums(value, redSlider.value)">200
 	&nbsp;&nbsp;&nbsp;Red Raters:  10<input id="redSlider" type="range" min="10" max="200" value="50" oninput="updateNums(blueSlider.value, value)">200</p>
