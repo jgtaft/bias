@@ -7,192 +7,6 @@
 <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
 <!-- <script src="jquery-1.5.js"></script> -->
 <!-- <script src="functions.js"></script> -->
-
-<style>
-
-.arc text {
-	font: 20px sans-serif;
-	/*text-anchor: middle;*/
-	fill:black;
-}
-
-.arc path {
-	stroke: #fff;
-}
-
-.arc path:hover {
-	fill-opacity: .7;
-	cursor: pointer;
-}
-
-#rs text {
-	font-size: 30;
-	alignment-baseline: middle;
-}
-
-#rs rect:hover {
-	stroke: white;
-	stroke-width: 3;
-}
-
-#diversebuttons{
-	padding-left: 350px;
-	padding-top: 40px;
-}
-
-#redSlider, #blueSlider {
-	width: 260px;
-}
-
-#curvepath{
-	fill: none;
-	stroke-width: 2px;
-}
-
-#community text{
-	fill: black;
-	font-size: 20;
-}
-#explanation {
-	font-style: italic;
-	font-size: 15 !important;
-}
-
-body { font-family: 'Raleway', Helvetica; font-weight: 300; padding: 20px;}
-th { text-align: middle; }
-th, td { padding: 0 1em 0.5ex 0;}
-th.center, td.center { text-align: center; }
-
-td.gay span {
-	display:none;
-}
-
-td.straight span {
-	display:none;
-}
-
-td.gay:after {
-	color: white;
-	background-color: #FFBF46;
-	display: block;
-	width: 25px;
-	height: 50px;
-	text-align: center;
-	vertical-align: middle;
-	content: '';
-	font-size: 20px;
-}
-
-td.straight:after {
-	color: white;
-	background-color: #54C6EB;
-	display: block;
-	width: 25px;
-	height: 50px;
-	text-align: center;
-	vertical-align: middle;
-	content: '';
-	font-size: 20px;
-}
-
-td.green span {
-	display: none;
-}
-
-td.green:after {
-	color: white;
-	background-color: #70A9A1;
-	display: block;
-	width: 150px;
-	height: 50px;
-	text-align: center;
-	vertical-align: middle;
-	content: '\2714';
-	font-size: 40px;
-}
-
-td.red span{
-	display: none;
-}
-
-td.red:after {
-	color: white;
-	background-color: #C14953;
-	display: block;
-	width: 150px;
-	height: 50px;
-	text-align: center;
-	vertical-align: middle;;
-	content: '\2716';
-	font-size: 40px;
-}
-
-span.blue {
-
-	color: black;
-	opacity:.75;
-	background-color: #FFBF46;
-	display: block;
-	width: 150px;
-	height: 50px;
-	font-size: 25px;
-	text-align: center;
-	border-radius: 5px;
-}
-#hands div {
-  display: inline-table;
-}
-
-#rowcontainer {
-  width:100%;
-  padding-bottom: 40px;
-}
-
-#rowcontainer div {
-  display: inline-table;
-
-}
-
-#handcontainer {
-  width: 70%;
-  height: 50%;
-}
-
-#handcontainer div {
-
-display: inline-table;
-
-}
-
-#whitehand {
-  width:35%;
-}
-
-#blackhand{
-  width: 35%;
-}
-
-#textcontainer {
-  width: 70%;
-}
-
-#textcontainer div {
-  display: inline-table;
-}
-
-#textbox1{
-  width: 35%;
-  font-size: 90px;
-  text-align: center;
-  font-weight: 700;
-}
-#textbox2{
-  width: 65%;
-  font-size: 50px;
-  text-align: left;
-}
-
-</style>
 </head>
 <script>
 	// Displays slide number slideNo and hides the active slide from the DOM
@@ -233,7 +47,6 @@ display: inline-table;
 	</div>
 <div id="page-wrap">
 	<div id="page1" class="slide" style="display: none;">
-		<a name="company"></a>
 		<h1> Company-Level Diversity & Inclusion </h1>
 		<h2>Diversity of Apple, Facebook, and Google's Technical Workforce</h2>
 		<p>Apple, Facebook, and Google are leaders in the field of technology. They set company standards for the technical workforce. However, lack of internal workforce diversity might mean that these companies are less likely to consider implicit bias towards underrepresented groups when designing platforms.</p>
@@ -474,7 +287,6 @@ display: inline-table;
 	</div> <!--END page1-->
 
 	<div id="page2" class="slide" style="display: none">
-		<a name="composition"></a>
 		<h1> Community Composition </h1>
 		<h2>The Case of Dating Apps</h2>
 		<p>Platforms can have rules or expectations about what kind of people are expected or allowed to use their apps or sites. These online dating apps have explicit or implicit requirements of their users. While some apps might target people of specific religions, genders, or educational backgrounds, others use features like connections to social media sites to ensure that users are on their best behavior.</p>
@@ -762,7 +574,6 @@ display: inline-table;
 	</div> <!--END page2-->
 
 	<div id="page3" class="slide" style="display: none">
-		<a name="policies"></a>
 	<h1> Community Policies and Messaging</h1>
 	<h1> Sexual Health & Dating Apps</h1>
 	<h2> A Design Scorecard</h2>
@@ -814,7 +625,6 @@ display: inline-table;
 	</div> <!--END page3-->
 
 	<div id="page4" class="slide" style="display: none">
-		<a name="prompting"></a>
 		<h1> Prompting & Priming </h1>
 		<p>Prompts and primes are used by designers to make sure people are on their best behavior when they're using a site. But it's easy to prime or prompt the wrong kind of behavior if you're not careful. Click on an app or site to see what its designers have done that might cause or stop bias.</p>
 		<svg id="pp"></svg>
@@ -967,11 +777,10 @@ display: inline-table;
 		}
 
 	</script>
-	</div> <!--END page1-->
+</div> <!--END page4-->
 
 
-	<div id="page6" class="slide" style="display: none">
-		<a name="whatlearn"></a>
+	<div id="page5" class="slide" style="display: none">
 		<h1> What Users Learn About One Another </h1>
 		<h1> The Visible Hand </h1>
 		<h2> Outcomes for black sellers are worse than white sellers in online marketplaces: </h2>
@@ -1016,9 +825,8 @@ display: inline-table;
 
 		</script>
 
-	</div> <!--END page3-->
-	<div id="page7" class="slide" style="display: none">
-		<a name="reputation"></a>
+	</div> <!--END page5-->
+	<div id="page6" class="slide" style="display: none">
 		<h1> Reputation, Reliability & Ratings </h1>
 		<div class="page-padding"></div>
 		<div id="container7" style="height: 200;">
@@ -1122,10 +930,9 @@ display: inline-table;
 			}
 		});
 		</script>
-	</div> <!--END page1-->
+	</div> <!--END page6-->
 
-	<div id="page9" class="slide" style="display: none">
-		<a name="reporting"></a>
+	<div id="page7" class="slide" style="display: none">
 		<h1> Reporting & Sanctioning </h1>
 		<h2> Reporting Bias: A <i>Choose Your Own Adventure</i> Game </h2>
 		<p>Reporting or flagging tools can be a powerful weapon against overt discrimination. But many platforms don't include this option by default. This game walks you through the process of reporting bias.</p>
@@ -1373,9 +1180,8 @@ display: inline-table;
 
 
 		</script>
-</div> <!--END page3-->
-<div id="page10" class="slide" style="display: none">
-	<a name="measurement"></a>
+</div> <!--END page7-->
+<div id="page8" class="slide" style="display: none">
 	<h1> Measurement & Detection </h1>
 	<p>People are known to rate others from their own subgroups better than they do people from other groups. Try adjusting the number of people in the blue group and red group to see how the overall ratings for each group changes. </p>
 	<p>Blue Raters: 10<input id="blueSlider" type="range" min="10" max="200" value="50" oninput="updateNums(value, redSlider.value)">200
@@ -1476,7 +1282,7 @@ display: inline-table;
 
 	</script>
 	<p>As you can see, an increase in the number of blue raters results in higher ratings for blue users, and vice versa. This is just one example of how bias on platforms can be measured and detected. If we can understand how ratings are distributed for people of different types, we can better construct algorithms that detect and eliminate such bias.</p>
-</div> <!--END page3-->
+</div> <!--END page8-->
 
 </div> <!--END page-wrap-->
 
