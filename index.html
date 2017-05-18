@@ -13,12 +13,17 @@
 	function slideShow(slideNo){
 		d3.selectAll(".slide")
 		.style("display", "none");
+		d3.selectAll(".slideButton")
+		.style("background-color", null)
+		.style("color", null);
 		var page = "#page" + slideNo;
-		console.log(page);
+		var slide = "#s" + slideNo;
 		d3.select(page)
 		.style("display", "block");
+		d3.select(slide)
+		.style("background-color", "#70A9A1")
+		.style("color", "white");
 	}
-
 </script>
 
 <body>
@@ -33,16 +38,16 @@
 	</div>
 	<div id="navwrap">
 		<div id="nav">
-			<a href="#company" class="slideButton" onclick="slideShow(1);"> Corporate Diversity</a>
-			<a href="#composition" class="slideButton" onclick="slideShow(2);">Community Composition</a>
-			<a href="#policies" class="slideButton" onclick="slideShow(3);">Policies & Messaging </a>
-			<a href="#prompting" class="slideButton" onclick="slideShow(4);">Prompting & Priming</a>
+			<a href="#s1" id="s1" class="slideButton" onclick="slideShow(1);"> Corporate Diversity</a>
+			<a href="#s2" id="s2" class="slideButton" onclick="slideShow(2);">Community Composition</a>
+			<a href="#s3" id="s3" class="slideButton" onclick="slideShow(3);">Policies & Messaging </a>
+			<a href="#s4" id="s4" class="slideButton" onclick="slideShow(4);">Prompting & Priming</a>
 		</div>
 		<div id="nav">
-			<a href="#whatlearn" class="slideButton" onclick="slideShow(5);">What Users Can Learn</a>
-			<a href="#reputation" class="slideButton" onclick="slideShow(6);">Reputation & Ratings</a>
-			<a href="#reporting" class="slideButton" onclick="slideShow(7);">Reporting & Sanctioning </a>
-			<a href="#measurement" class="slideButton" onclick="slideShow(8);">Measurement & Detection </a>
+			<a href="#whatlearn" id="s5" class="slideButton" onclick="slideShow(5);">What Users Can Learn</a>
+			<a href="#reputation" id="s6" class="slideButton" onclick="slideShow(6);">Reputation & Ratings</a>
+			<a href="#reporting" id="s7" class="slideButton" onclick="slideShow(7);">Reporting & Sanctioning </a>
+			<a href="#measurement" id="s8" class="slideButton" onclick="slideShow(8);">Measurement & Detection </a>
 		</div>
 	</div>
 <div id="page-wrap">
@@ -52,8 +57,8 @@
 		<p>Apple, Facebook, and Google are leaders in the field of technology. They set company standards for the technical workforce. However, lack of internal workforce diversity might mean that these companies are less likely to consider implicit bias towards underrepresented groups when designing platforms.</p>
 
 		<div id="diversebuttons">
-			<a class="button" onclick="showRace()">Ethnicity </a>
-			<a class="button" onclick="showGender()">Gender</a>
+			<a class="button" id="raceButton" onclick="showRace()" style="background-color: #70A9A1; color: white;">Ethnicity </a>
+			<a class="button" id="genderButton" onclick="showGender()">Gender</a>
 		</div>
 		<svg id="diversity" width="960" height="500"></svg>
 		<script>
@@ -62,10 +67,23 @@
 		function showGender(){
 			d3.select("#race").attr("display", "none");
 			d3.select("#gender").attr("display", "inline");
+			d3.select("#raceButton")
+			.style("background-color", null)
+			.style("color", null);
+			d3.select("#genderButton")
+			.style("background-color", "#70A9A1")
+			.style("color", "white");
+
 		}
 		function showRace(){
 			d3.select("#gender").attr("display", "none");
 			d3.select("#race").attr("display", "inline");
+			d3.select("#genderButton")
+			.style("background-color", null)
+			.style("color", null);
+			d3.select("#raceButton")
+			.style("background-color", "#70A9A1")
+			.style("color", "white");
 		}
 
 		var diversity = d3.select("#diversity"),
@@ -1287,7 +1305,6 @@
 </div> <!--END page-wrap-->
 
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script> -->
-<script></script>
 </body>
 <footer>
 	<p> Developed by Jevan Hutson, Jessie Taft, Olivia Wherry, & Tyler Alicea </p>
