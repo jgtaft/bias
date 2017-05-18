@@ -1,12 +1,11 @@
 <html>
 <head>
 <meta charset='UTF-8' />
-<link rel="stylesheet" type="text/css" href="main.css" />
+<link rel="stylesheet" type="text/css" href="main2.css" />
 <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
-<!-- <script src="jquery-1.5.js"></script> -->
-<!-- <script src="functions.js"></script> -->
+
 </head>
 <script>
 	// Displays slide number slideNo and hides the active slide from the DOM
@@ -32,9 +31,7 @@
 		<h2>Designing Against Bias & Discrimination In User-to-User Platforms</h2>
 	</div>
 	<div id="subheader">
-		<p>What kind of design strategies can platforms use to mediate interactions between users?
-		<br/><br/>How can those design strategies cause or stop harmful bias or discrimination?
-		<br/><br/>Select a button below to see an example of a strategy in use.</p>
+		<p>There are many different strategies that designers can use to mediate interactions between users of their platforms. Some of these design strategies can cause or stop harmful bias or discrimination. Select a button below to see an example of a strategy in use.</p>
 	</div>
 	<div id="navwrap">
 		<div id="nav">
@@ -62,8 +59,8 @@
 		</div>
 		<svg id="diversity" width="960" height="500"></svg>
 		<script>
-		//with help from https://bl.ocks.org/mbostock/3887235
 
+		//with help from https://bl.ocks.org/mbostock/3887235
 		function showGender(){
 			d3.select("#race").attr("display", "none");
 			d3.select("#gender").attr("display", "inline");
@@ -73,8 +70,8 @@
 			d3.select("#genderButton")
 			.style("background-color", "#70A9A1")
 			.style("color", "white");
-
 		}
+
 		function showRace(){
 			d3.select("#gender").attr("display", "none");
 			d3.select("#race").attr("display", "inline");
@@ -595,6 +592,24 @@
 	<h1> Community Policies and Messaging</h1>
 	<h1> Sexual Health & Dating Apps</h1>
 	<h2> A Design Scorecard</h2>
+	<p> Location-based, user-to-user dating platforms play a critical role in facilitating social,romantic, and intimate interaction. A number of popular dating and hook-up applications are working with public health and advocacy organizations to develop design strategies to promote HIV/STI testing and reduce the bias and stigma associated with HIV. Here we review and score 20 different dating/hook-up applications for profile elements/disclosures and in-app resources health resources.
+
+	<table>
+		<tr>
+			<th>HIV Status</th>
+			<th>Last Tested Date</th>
+			<th>Safety Practices</th>
+			<th>Resources</th>
+		</tr>
+		<tr>
+			<td>Allows or encourages users to disclose their HIV Status</td>
+			<td>Allows or encourages users to disclose the date of their last HIV/STI screening</td>
+			<td>Allows or encourages to disclose their sexual safety practices, such as condoms or PrEP</td>
+			<td>Provides in-app information and resources relating to sexual health </td>
+
+	</table>
+
+	<svg id='legend' height="60" width="600" ></svg>
 	<div id='scores'></div>
 	<script>
 
@@ -633,6 +648,11 @@
 			  .text(function(a) {
 			  	return a;
 			  });
+
+			var gaylegend = d3.select("#legend").append("rect").attr("height", 55 ).attr("width", 27 ).style("fill", "#70A9A1" ).attr("transform", "translate(0,0)");
+			var gaytext = d3.select("#legend").append("text").text("App for Sexual Minority Men").attr("transform", "translate(36,33)");
+			var straightlegend = d3.select("#legend").append("rect").attr("height", 55 ).attr("width", 27 ).style("fill", "#3A506B" ).attr("transform", "translate(300,0)");
+			var straighttext = d3.select("#legend").append("text").text("App for Broader Audience").attr("transform", "translate(336,33)");
 
 		  return table;
 		};
