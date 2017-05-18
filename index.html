@@ -975,7 +975,107 @@ display: inline-table;
 		<a name="reputation"></a>
 		<h1> Reputation, Reliability & Ratings </h1>
 		<div class="page-padding"></div>
-		<p>Another set of platform strategies aim to equip users with information about what to expect from a transacting partner on the site—how reliable and trustworthy she can be expected to be, and how she can be expected to behave—based on indicators derived from past behavior. These indicators can confer a sense of expertise, reputation, or trustworthiness that may increase counterparties’ trust in the exchange—perhaps mitigating biases based on countervailing signals—and often take the form of badges or other graphic elements on users’ profiles. Similarly, testimonials, reviews, and ratings serve as signals of reliability—though the act of evaluation may itself operate as a conduit for bias.</p>
+		<div id="container7" style="height: 200;">
+		  <div id="stars" style="text-align: center;">
+		    <h2 style="display: inline;">Select a rating for your driver:</h1>
+		  </div>
+		  <div id="photos" style="margin-top: 30px; display: none; text-align: center">
+		    <!-- Photo from http://bit.ly/2qtx3Bc -->
+		    <img src="vis7/man.jpg" alt="A man with a beard" style="border: 1px solid black">
+		    <!-- Photo from http://bit.ly/2pYGbu3 -->
+		    <img src="vis7/woman.jpg" alt="A woman sitting" style="border: 1px solid black">
+		    <!-- Photo from http://bit.ly/2pYyQdQ -->
+		    <img src="vis7/woman2.jpg" alt="A woman sings" style="border: 1px solid black">
+		    <!-- Photo from http://bit.ly/2rtpl7H -->
+		    <img src="vis7/man2.jpg" alt="A man looks at the camera" style="border: 1px solid black">
+				<!-- Photo from http://bit.ly/2pZ3wvo -->
+			 <img src="vis7/woman3.jpg" alt="A woman looks at the camera" style="border: 1px solid black">
+		  </div>
+		</div>
+
+		<script>
+		var svg = d3.select("#stars").append("svg")
+		.attr("height", 40)
+		.attr("width", 250)
+
+		// Add svg stars
+		for(var i = 0; i < 5; i++){
+		  svg.append("polygon")
+		  .attr("id", "star" + i)
+		  .attr("class", "star")
+		  .attr("points", "100,10 40,198 190,78 10,78 160,198")
+		  .attr("transform", "scale(.2) translate(" + 185 * i + ", 10)")
+		  .style("fill", "grey")
+		  .style("fill-rule", "nonzero");
+		}
+
+		var selected = 0;
+		var stars;
+
+		svg.selectAll(".star")
+		.on("mouseover", function(){
+		  if(selected == 0){
+		    var id = this.id;
+		    if(id == "star0"){
+		      d3.select(this).style("fill", "#f7ec59");
+		      stars = 1;
+		    } else if(id == "star1"){
+		      d3.select(this).style("fill", "#f7ec59");
+		      d3.select("#star0").style("fill", "#f7ec59");
+		      stars = 2;
+		    } else if(id == "star2"){
+		      d3.select(this).style("fill", "#f7ec59");
+		      d3.select("#star0").style("fill", "#f7ec59");
+		      d3.select("#star1").style("fill", "#f7ec59");
+		      stars = 3;
+		    } else if(id == "star3"){
+		      d3.select(this).style("fill", "#f7ec59");
+		      d3.select("#star0").style("fill", "#f7ec59");
+		      d3.select("#star1").style("fill", "#f7ec59");
+		      d3.select("#star2").style("fill", "#f7ec59");
+		      stars = 4;
+		    } else if(id == "star4"){
+		      d3.select(this).style("fill", "#f7ec59");
+		      d3.select("#star0").style("fill", "#f7ec59");
+		      d3.select("#star1").style("fill", "#f7ec59");
+		      d3.select("#star2").style("fill", "#f7ec59");
+		      d3.select("#star3").style("fill", "#f7ec59");
+		      stars = 5;
+		    }
+		  }
+		})
+		.on("mouseout", function(){
+		  if(selected == 0) {
+		    d3.selectAll(".star").style("fill", "grey");
+		  }
+		})
+		.on("click", function() {
+			if(selected == 0){
+				selected = 1;
+			  d3.select("#photos").style("display", "block");
+			  d3.select("#container7").style("height", "450px");
+			  if(stars == 5) {
+			    d3.select("#photos").append("text")
+			    .html("<p>Thanks for your rating! Your rating of 5 stars went through for the first driver, the white male. Unfortunately, the act of evaluation itself can operate as a conduit for bias, meaning underrepresented groups could have lower ratings. A rating of less than 4.6 on Uber, for example, can result in disciplinary action. <br><br> Another set of platform strategies aim to equip users with information about what to expect from a transacting partner on the site—how reliable and trustworthy she can be expected to be, and how she can be expected to behave—based on indicators derived from past behavior. These indicators can confer a sense of expertise, reputation, or trustworthiness that may increase counterparties’ trust in the exchange—perhaps mitigating biases based on countervailing signals—and often take the form of badges or other graphic elements on users’ profiles.</p><br>");
+			  } else {
+			    d3.select("#photos").append("text")
+			    .html("<p>Thanks for your rating! Unfortunately ratings of less than 4.6 on Uber can result in disciplinary action against the driver. Furthermore, the act of evaluation can act as a conduit for bias, meaning that underrepresented groups could have a lower rating than what you gave. <br><br> Another set of platform strategies aim to equip users with information about what to expect from a transacting partner on the site—how reliable and trustworthy she can be expected to be, and how she can be expected to behave—based on indicators derived from past behavior. These indicators can confer a sense of expertise, reputation, or trustworthiness that may increase counterparties’ trust in the exchange—perhaps mitigating biases based on countervailing signals—and often take the form of badges or other graphic elements on users’ profiles.</p><br>");
+			  }
+			  d3.select("#photos").append("button")
+			  .attr("type", "button")
+			  .text("Rate again")
+			  .on("click", function(){
+			    selected = 0;
+			    stars = 0;
+			    d3.selectAll(".star").style("fill", "grey");
+			    d3.select("#photos").style("display", "none");
+			    d3.select("#container7").style("height", "200px");
+			    d3.select("#photos").selectAll("text").remove();
+			    d3.select("#photos").select("button").remove();
+			  });
+			}
+		});
+		</script>
 	</div> <!--END page1-->
 
 	<div id="page8" class="slide">
