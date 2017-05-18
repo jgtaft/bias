@@ -590,8 +590,7 @@
 
 	<div id="page3" class="slide" style="display: none">
 	<h1> Community Policies and Messaging</h1>
-	<h1> Sexual Health & Dating Apps</h1>
-	<h2> A Design Scorecard</h2>
+	<h2> Sexual Health & Dating Apps: A Design Scorecard</h2>
 	<p> Location-based, user-to-user dating platforms play a critical role in facilitating social,romantic, and intimate interaction. A number of popular dating and hook-up applications are working with public health and advocacy organizations to develop design strategies to promote HIV/STI testing and reduce the bias and stigma associated with HIV. Here we review and score 20 different dating/hook-up applications for profile elements/disclosures and in-app resources health resources.
 
 	<table>
@@ -820,8 +819,7 @@
 
 	<div id="page5" class="slide" style="display: none">
 		<h1> What Users Learn About One Another </h1>
-		<h1> The Visible Hand </h1>
-		<h2> Outcomes for black sellers are worse than white sellers in online marketplaces: </h2>
+		<h2> The Visible Hand: Outcomes for black sellers are worse than white sellers in online marketplaces: </h2>
 		<p>If you walked into a store to buy a brand-new Apple iPod, would you be less likely to buy it, or want to pay less for it, if it were presented by a salesperson who was black rather than white?<br/><br/>
 		Transpose that shopping experience to Craigslist, and that sums up how the average American behaves, according to newly published research co-authored by University of Virginia professor Jennifer Doleac.<br/><br/>
 		Results of the study showed that black sellers did worse than white sellers on a variety of metrics:</p>
@@ -1221,17 +1219,19 @@
 </div> <!--END page7-->
 <div id="page8" class="slide" style="display: none">
 	<h1> Measurement & Detection </h1>
+	<h2> The Effect of Population Size on Relative Ratings</h2>
 	<p>People are known to rate others from their own subgroups better than they do people from other groups. Try adjusting the number of people in the blue group and red group to see how the overall ratings for each group changes. </p>
 	<p>Blue Raters: 10<input id="blueSlider" type="range" min="10" max="200" value="50" oninput="updateNums(value, redSlider.value)">200
 	&nbsp;&nbsp;&nbsp;Red Raters:  10<input id="redSlider" type="range" min="10" max="200" value="50" oninput="updateNums(blueSlider.value, value)">200</p>
-	<p><div id="blueRaters"></div><div id="redRaters"></div></p>
 	<svg id = "md" width="960" height="500"></svg>
 	<script>
 	var md = d3.select("#md");
 
 
-	md.append("text").attrs({x: 20, y: 150, stroke:"black"}).text("Ratings of Blue");
-	md.append("text").attrs({x: 20, y: 300, stroke:"black"}).text("Ratings of Red");
+	md.append("text").attrs({x: 20, y: 150}).text("Ratings of Blue");
+	md.append("text").attrs({x: 20, y: 300}).text("Ratings of Red");
+	md.append("text").attrs({id: "bluenum", x: 100, y: 30});
+	md.append("text").attrs({id: "rednum", x: 100, y: 60});
 
 	var xScale = d3.scaleLinear().range([150, 750]);
 	var curveXScale = d3.scaleLinear().range([150, 750]);
@@ -1245,8 +1245,8 @@
 
 		red = Number(red);
 		blue = Number(blue);
-		document.getElementById("blueRaters").innerHTML = "" + blue;
-		document.getElementById("redRaters").innerHTML = "" + red;
+		d3.select("#rednum").text(red + " Red Raters");
+		d3.select("#bluenum").text(blue + " Blue Raters");
 
 		//n = number of raters (points), mu = mean, sigma = SD, y = point y location, id = point/set id, c = point color
 		var blueOwn = make(blue, 4, 1, 150, "bb", "#304FFD");//own dist
@@ -1262,9 +1262,9 @@
 		var redMean = (rOsum/(red+blue)) + (bRsum/(red+blue));
 		var blueMean = (bOsum/(red+blue)) + (rBsum/(blue+red));
 
-		md.append("text").attrs({class: "md", x: 760, y: 150, stroke:"black"})
+		md.append("text").attrs({class: "md", x: 760, y: 150, fill:"black"})
 			.text("Avg rating of Blue: " + Math.round(blueMean * 100)/100);
-		md.append("text").attrs({class: "md", x: 760, y: 300, stroke:"black"})
+		md.append("text").attrs({class: "md", x: 760, y: 300, fill:"black"})
 			.text("Avg rating of Red: " + Math.round(redMean * 100)/100);
 	}
 	//code for making curves adapted from:
