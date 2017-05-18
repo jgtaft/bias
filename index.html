@@ -208,7 +208,6 @@ display: inline-table;
 		<div id="nav">
 			<a href="#whatlearn" class="button">What Users Can Learn</a>
 			<a href="#reputation" class="button">Reputation & Ratings</a>
-			<a href="#data" class="button">Data Validation</a>
 			<a href="#reporting" class="button">Reporting & Sanctioning </a>
 			<a href="#measurement" class="button">Measurement & Detection </a>
 		</div>
@@ -448,8 +447,7 @@ display: inline-table;
 	<script>
 	var community = d3.select("#community");
 
-	/// category text
-
+	// category text
 	community.append("text")
 		.attr("x", 190)
 		.attr("y", 45)
@@ -462,47 +460,23 @@ display: inline-table;
 		.attr("fill", "black")
 		.text("Community Requirements");
 
-
-	///Community Circles
+	//Community Circles
+	community.append("circle")
+		.attrs({id: "circle", r: 35, cx: 750, cy:100, fill: "#5DA5DA"});
 
 	community.append("circle")
-				.attr("id","circle")
-				.attr("r",35)
-				.attr("cx", 750)
-				.attr("cy", 100)
-				.attr("fill", "#5DA5DA");
+		.attrs({id: "circle", r: 35, cx: 750, cy:200, fill: "#60BD68"});
 
 	community.append("circle")
-				.attr("id","circle")
-				.attr("r",35)
-				.attr("cx", 750)
-				.attr("cy", 200)
-				.attr("fill", "#60BD68");
+		.attrs({id: "circle", r: 35, cx: 750, cy:300, fill: "#FAA43A"});
 
 	community.append("circle")
-				.attr("id","circle")
-				.attr("r",35)
-				.attr("cx", 750)
-				.attr("cy", 300)
-				.attr("fill", "#FAA43A");
-
+		.attrs({id: "circle", r: 35, cx: 750, cy:400, fill: "#F17CB0"});
 
 	community.append("circle")
-				.attr("id","circle")
-				.attr("r",35)
-				.attr("cx", 750)
-				.attr("cy", 400)
-				.attr("fill", "#F17CB0");
+		.attrs({id: "circle", r: 35, cx: 750, cy:500, fill: "#B276B2"});
 
-	community.append("circle")
-				.attr("id","circle")
-				.attr("r",35)
-				.attr("cx", 750)
-				.attr("cy", 500)
-				.attr("fill", "#B276B2");
-
-	////images
-
+	//images
 	community.append("image")
 				.attr("xlink:href", "vis2/bumble.png")
 				.attr("x", 705)
@@ -535,71 +509,45 @@ display: inline-table;
 	///Text for circles
 
 	community.append("text")
-		.attr("x", 830)
-		.attr("y", 105)
-		.attr("fill", "black")
+		.attrs({x: 830, y: 105, fill:"black"})
 		.text("Location");
 
 	community.append("text")
-		.attr("x", 830)
-		.attr("y", 205)
-		.attr("fill", "black")
+		.attrs({x: 830, y: 205, fill:"black"})
 		.text("Gender");
 
 	community.append("text")
-		.attr("x", 830)
-		.attr("y", 305)
-		.attr("fill", "black")
+		.attrs({x: 830, y: 305, fill:"black"})
 		.text("Social Media Account");
 
 	community.append("text")
-		.attr("x", 830)
-		.attr("y", 405)
-		.attr("fill", "black")
+		.attrs({x: 830, y: 405, fill:"black"})
 		.text("Religion");
 
 	community.append("text")
-		.attr("x", 830)
-		.attr("y", 505)
-		.attr("fill", "black")
+		.attrs({x: 830, y: 505, fill:"black"})
 		.text("Education");
 
-
-
-
-
-	///text for images
-
+	//text for images
 	community.append("text")
-		.attr("x", 100)
-		.attr("y", 105)
-		.attr("fill", "black")
+		.attrs({x: 100, y: 105, fill:"black"})
 		.text("Bumble");
 
 	community.append("text")
-		.attr("x", 100)
-		.attr("y", 205)
-		.attr("fill", "black")
+		.attrs({x: 100, y: 205, fill:"black"})
 		.text("Jswipe");
 
 	community.append("text")
-		.attr("x", 100)
-		.attr("y", 305)
-		.attr("fill", "black")
+		.attrs({x: 100, y: 305, fill:"black"})
 		.text("Tinder");
 
 	community.append("text")
-		.attr("x", 100)
-		.attr("y", 405)
-		.attr("fill", "black")
+		.attrs({x: 100, y: 405, fill:"black"})
 		.text("The League");
 
 	community.append("text")
-		.attr("x", 100)
-		.attr("y", 505)
-		.attr("fill", "black")
+		.attrs({x: 100, y: 505, fill:"black"})
 		.text("Grindr");
-
 
 	///lines connecting apps to community structure
 
@@ -717,23 +665,6 @@ display: inline-table;
 			.attr("x2", 716)
 			.attr("y2", 200);
 
-		// d3.json("vis2/vis2.json", function(error, data) {
-		// 	console.log(data);
-		//
-		// 	var community = d3.select("#community");
-		//
-		// 	var applist = ["bumble", "jswipe", "tinder", "league", "grindr"];
-		// 	var colors = ["#5DA5DA", "#60BD68", "#FAA43A", "#F17CB0", "#B276B2"];
-		// 	for(var i=0; i<applist.length; i++){
-		// 		community.append("image")
-		// 			.attr("xlink:href", applist[i] + ".png")
-		// 			.attr("x")
-		// 	}
-		// 	community.selectAll("image").data(data).enter().append("image")
-		// 		.attr("xlink:href", )
-		//
-		// });
-
 	</script>
 
 	</div> <!--END page2-->
@@ -802,8 +733,8 @@ display: inline-table;
 		var width = 960;
 		var prompt = d3.select("#pp").attrs({height: height, width: width});
 
-		//green blue yellow red
-		var colors = ["#2ecc71", "#3498db", "#f1c40f", "#e74c3c"];
+		// //green blue yellow red
+		// var colors = ["#2ecc71", "#3498db", "#f1c40f", "#e74c3c"];
 
 		prompt.append("text").attrs({x: width/2, y: 40, fill: "black", 'font-size':30})
 			.attr("text-anchor", "middle")
@@ -881,10 +812,10 @@ display: inline-table;
 			});
 		})
 
-		var daddyhuntText = ["Gay dating app", "DaddyHunt asks users", "to agree to the","DaddyHunt Code when", "they create or edit their", "profiles, ensuring that","values of safety and", "respect are front and", "center for the community."];
-		var taskrabbitText = [];
-		var twitterText = [];
-		var nextdoorText = [];
+		var daddyhuntText = ["Gay dating app", "DaddyHunt asks", "users to agree to", "the DaddyHunt Code", "when they create or", "edit their profiles", "ensuring that values","of safety and respect", "are front and center", "for the community."];
+		var taskrabbitText = ["Task and labor site", "TaskRabbit shows", "users seeking workers", "a list of tasks that", "sometimes show", "images of gendered", "stereotypes of jobs", "like Personal Assitant.", "This early, subtle", "prompt could harm", "workers who don't fit","into these gendered","categories."];
+		var twitterText = ["Researchers studying harrassment on Twitter", "built a bot that finds instances of racist", "language and tweets at the user asking them", "to stop. They found that white 'users' with", "many followers were most effective at", "changing behavior in this after-the-fact", "intervention."];
+		var nextdoorText = ["Neighborhood and community app Nextdoor", "forces users reporting suspicious behavior","to describe suspects using characteristics","besides race, a subtle intervention that","stops innocent people from being reported."];
 
 		function showImage(filename, color, app){
 			var g = prompt.append("g").attr("id", "ppGroup")
@@ -893,27 +824,62 @@ display: inline-table;
 				});
 			g.append("rect")
 				.attrs({x:(width/2)-300, y:(height/2)-300, height: 600, width: 600, fill: color});
-			g.append("image")
-				.attr("xlink:href", "priming/" + filename)
-				.attrs({id: "ppImg", x:(width/2)-290, y:(height/2)-290})
-				.attr("height", 400);
-			g.append("image")
-				.attr("xlink:href", "priming/close.png")
-				.attrs({x: 737, y: 73, width:30});
 
 			if(app=="DaddyHunt"){
+				g.append("image")
+					.attr("xlink:href", "priming/" + filename)
+					.attrs({id: "ppImg", x:(width/2)-290, y:(height/2)-290})
+					.attr("height", 440);
 				for (i=0; i<daddyhuntText.length; i++){
 					g.append("text")
-						.attr("x", 480)
-						.attr("y", (i * 40) + 150)
+						.attr("x", 495)
+						.attr("y", (i * 40) + 130)
 						.attrs({fill: "black", 'font-size': 27})
 						.text(daddyhuntText[i]);
 				}
 			}
-			else if (app=="TaskRabbit") { text = taskrabbitText; }
-			else if (app=="Twitter") { text = twitterText; }
-			else if (app=="Nextdoor") { text = nextdoorText; }
-
+			else if (app=="TaskRabbit") {
+				g.append("image")
+					.attr("xlink:href", "priming/" + filename)
+					.attrs({id: "ppImg", x:(width/2)-290, y:(height/2)-290})
+					.attr("height", 450);
+				for (i=0; i<taskrabbitText.length; i++){
+					g.append("text")
+						.attr("x", 490)
+						.attr("y", (i * 40) + 130)
+						.attrs({fill: "black", 'font-size': 27})
+						.text(taskrabbitText[i]);
+				}
+			}
+			else if (app=="Twitter") {
+				g.append("image")
+					.attr("xlink:href", "priming/" + filename)
+					.attrs({id: "ppImg", x:(width/2)-290, y:(height/2)-290})
+					.attr("width", 580);
+				for (i=0; i<twitterText.length; i++){
+					g.append("text")
+						.attr("x", 200)
+						.attr("y", (i * 40) + 400)
+						.attrs({fill: "black", 'font-size': 27})
+						.text(twitterText[i]);
+				}
+			}
+			else if (app=="Nextdoor") {
+				g.append("image")
+					.attr("xlink:href", "priming/" + filename)
+					.attrs({id: "ppImg", x:(width/2)-290, y:(height/2)-290})
+					.attr("width", 440);
+				for (i=0; i<nextdoorText.length; i++){
+					g.append("text")
+						.attr("x", 200)
+						.attr("y", (i * 40) + 485)
+						.attrs({fill: "white", 'font-size': 27})
+						.text(nextdoorText[i]);
+				}
+			}
+			g.append("image")
+				.attr("xlink:href", "priming/close.png")
+				.attrs({x: 737, y: 73, width:30});
 
 		}
 
@@ -1077,13 +1043,6 @@ display: inline-table;
 		});
 		</script>
 	</div> <!--END page1-->
-
-	<div id="page8" class="slide">
-		<a name="data"></a>
-		<h1> Data Quality & Validation </h1>
-		<div class="page-padding"></div>
-		<p>Users commonly provide feedback on each others’ performance in the course of using a platform—by rating one another, leaving reviews on past transactions, and the like. Though such activity can provide a basis for trust and reliability with unknown partners, it is also likely to be inflected by users’ implicit biases, and may therefore result in systematically worse outcomes for users from marginalized groups. To ameliorate these effects, platforms may seek to improve the quality of evaluations that users tender to one another on a platform. They may do this by requiring more granular information of users in suspect cases, in efforts to make users reflect more precisely on the attributes of a past transaction. They may also mitigate the effects of bias (if not bias itself) by adjusting ratings or de-listing reviews likely to be impacted by bias, perhaps using machine learning techniques to detect high- or low-quality evaluations. Finally, platforms may require validation of poor evaluations with external sources of data.</p>
-	</div> <!--END page2-->
 
 	<div id="page9" class="slide">
 		<a name="reporting"></a>
@@ -1399,6 +1358,7 @@ display: inline-table;
 				point = { "q": q, "p": p, "y": y}
 				data.push(point)
 		};
+
 		data.sort(function(x, y) {
 				return x.q - y.q;
 		});
