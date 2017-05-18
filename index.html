@@ -11,6 +11,11 @@ JESSIE TAFT (jgt43)
 JEVAN HUTSON (jah553)
 OLIVIA WHERRY (odw2)
 & TYLER ALICEA (tra37)-->
+<style>
+p {
+	font-size:19;
+}
+</style>
 </head>
 <script>
 	// Displays slide number slideNo and hides the active slide from the DOM
@@ -56,7 +61,7 @@ OLIVIA WHERRY (odw2)
 	<div id="page1" class="slide" style="display: none;">
 		<h1> Company-Level Diversity & Inclusion </h1>
 		<h2>Diversity of Apple, Facebook, and Google's Technical Workforce</h2>
-		<p>Apple, Facebook, and Google are leaders in the field of technology. They set company standards for the technical workforce. However, lack of internal workforce diversity might mean that these companies are less likely to consider implicit bias towards underrepresented groups when designing platforms.</p>
+		<p>Apple, Facebook, and Google set standards for the technology industry. However, poor workforce diversity means that they may not consider implicit bias towards underrepresented groups in their products.</p>
 
 		<div id="diversebuttons">
 			<a class="button" id="raceButton" onclick="showRace()" style="background-color: #70A9A1; color: white;">Ethnicity </a>
@@ -309,7 +314,8 @@ OLIVIA WHERRY (odw2)
 	<div id="page2" class="slide" style="display: none">
 		<h1> Community Composition </h1>
 		<h2>The Case of Dating Apps</h2>
-		<p>Platforms can have rules or expectations about what kind of people are expected or allowed to use their apps or sites. These online dating apps have explicit or implicit requirements of their users. While some apps might target people of specific religions, genders, or educational backgrounds, others use features like connections to social media sites to ensure that users are on their best behavior.</p>
+		<p>Platforms can have rules about what kind of people are allowed to use their apps. These dating apps have explicit or implicit requirements of their users. These requirements might keep certain types of people out or ensure that users are identifiable.<br/>
+		See which dating apps have which kinds of requirements.</p>
 		<svg id="community" height="600" width="1000"></svg>
 		<script>
 		var community = d3.select("#community");
@@ -596,7 +602,8 @@ OLIVIA WHERRY (odw2)
 	<div id="page3" class="slide" style="display: none">
 	<h1> Community Policies and Messaging</h1>
 	<h2> Sexual Health & Dating Apps: A Design Scorecard</h2>
-	<p> Location-based, user-to-user dating platforms play a critical role in facilitating social,romantic, and intimate interaction. A number of popular dating and hook-up applications are working with public health and advocacy organizations to develop design strategies to promote HIV/STI testing and reduce the bias and stigma associated with HIV. Here we review and score 20 different dating/hook-up applications for profile elements/disclosures and in-app resources health resources.
+	<p> Dating apps facilitate social, romantic, and intimate interaction for many people. Some apps work with public health and advocacy organizations to promote HIV/STI testing and reduce the bias and stigma associated with HIV. <br/>
+		We score 20 different dating/hook-up apps by whether they allow HIV/STI disclosures or offer sexual health resources.
 
 	<table>
 		<tr>
@@ -606,11 +613,11 @@ OLIVIA WHERRY (odw2)
 			<th>Resources</th>
 		</tr>
 		<tr>
-			<td>Allows or encourages users to disclose their HIV Status</td>
-			<td>Allows or encourages users to disclose the date of their last HIV/STI screening</td>
-			<td>Allows or encourages to disclose their sexual safety practices, such as condoms or PrEP</td>
+			<td>Allows users to disclose their HIV Status</td>
+			<td>Allows users to disclose the date of their last HIV/STI screening</td>
+			<td>Allows users to report sexual safety practices, such as condoms or PrEP</td>
 			<td>Provides in-app information and resources relating to sexual health </td>
-
+		</tr>
 	</table>
 
 	<svg id='legend' height="60" width="600" ></svg>
@@ -668,7 +675,7 @@ OLIVIA WHERRY (odw2)
 
 	<div id="page4" class="slide" style="display: none">
 		<h1> Prompting & Priming </h1>
-		<p>Prompts and primes are used by designers to make sure people are on their best behavior when they're using a site. But it's easy to prime or prompt the wrong kind of behavior if you're not careful. Click on an app or site to see what its designers have done that might cause or stop bias.</p>
+		<p>Prompts and primes are used by designers to make sure app users are on their best behavior. But it's easy to prime or prompt the wrong kind of behavior if you're not careful. <br/>Click on an app or site to see what its designers have done that might cause or stop bias.</p>
 		<svg id="pp"></svg>
 	<script>
 		var height = 720;
@@ -825,9 +832,9 @@ OLIVIA WHERRY (odw2)
 	<div id="page5" class="slide" style="display: none">
 		<h1> What Users Learn About One Another </h1>
 		<h2> The Visible Hand: Outcomes for black sellers are worse than white sellers in online marketplaces: </h2>
-		<p>If you walked into a store to buy a brand-new Apple iPod, would you be less likely to buy it, or want to pay less for it, if it were presented by a salesperson who was black rather than white?<br/><br/>
-		Transpose that shopping experience to Craigslist, and that sums up how the average American behaves, according to newly published research co-authored by University of Virginia professor Jennifer Doleac.<br/><br/>
-		Results of the study showed that black sellers did worse than white sellers on a variety of metrics:</p>
+		<p>If you walked into a store to buy a brand-new Apple iPod, would you want to pay less for it, if it were presented by a salesperson who was black rather than white?<br/><br/>
+		In online marketplaces like Craigslist, that's how the average American behaves, according to research by University of Virginia professor Jennifer Doleac.<br/><br/>
+		Black sellers did worse than white sellers on a variety of metrics:</p>
 		<div id="hands"></div>
 		<script>
 
@@ -852,12 +859,14 @@ OLIVIA WHERRY (odw2)
 		      textcontainer = rowcontainer.append("div").attr("id", "textcontainer");
 		      whitehand = handcontainer.append("div")
 		        .attr("id", "whitehand").append("svg")
-		        .attr("height", 350)
-		        .attr("width", 260)
-		        .append("path")
-		        .attr("d", handPath)
+		        .attr("height", 350).attr("width", 260)
+		        .append("path").attr("d", handPath)
 		        .attr("transform", function(){return "scale(" + baseline + ")"}).style("fill", "#FFDFC4");
-		      blackhand = handcontainer.append("div").attr("id", "blackhand").append("svg").attr("height", 350).attr("width", 260).append("path").attr("d", handPath).attr("transform", function(){return "scale(" + baselineredux + ")"}).style("fill", "#5C3836");
+		      blackhand = handcontainer.append("div")
+						.attr("id", "blackhand").append("svg")
+						.attr("height", 350).attr("width", 260)
+						.append("path").attr("d", handPath)
+						.attr("transform", function(){return "scale(" + baselineredux + ")"}).style("fill", "#5C3836");
 		      textbox1 = textcontainer.append("div").attr("id", "textbox1").append("text").text( function(){return differentialdisplay + "%"});
 		      textbox2 = textcontainer.append("div").attr("id", "textbox2").append("text").text( function(){return d.variable});
 
@@ -872,9 +881,9 @@ OLIVIA WHERRY (odw2)
 		<!-- <div class="page-padding"></div> -->
 		<div id="container7" style="height: 200;">
 			<h2>Rating Drivers on Ridesharing Applications</h2>
-					<p>Another set of platform strategies aim to equip users with information about what to expect from a transacting partner on the site—how reliable and trustworthy she can be expected to be, and how she can be expected to behave—based on indicators derived from past behavior. These indicators can confer a sense of expertise, reputation, or trustworthiness that may increase counterparties’ trust in the exchange—perhaps mitigating biases based on countervailing signals—and often take the form of badges or other graphic elements on users’ profiles.<br></p>
+					<p>Star ratings help users determine how reputable other users are. They can help build trust between users, but they can also be used to make decisions about users based on racial or gender bias.<br></p>
 		  <div id="stars" style="text-align: center;">
-		    <h2 style="display: inline;">Select a rating for your driver:<br></h2>
+		    <h2 style="display: inline;">Your just got out of your Uber car.<br/> Select a rating for your driver:<br/></h2>
 		  </div>
 		  <div id="photos" style="margin-top: 30px; display: none; text-align: center">
 		    <!-- Photo from http://bit.ly/2qtx3Bc -->
@@ -953,10 +962,10 @@ OLIVIA WHERRY (odw2)
 			  d3.select("#container7").style("height", "450px");
 			  if(stars == 5) {
 			    d3.select("#photos").append("text")
-			    .html("<p>Thanks for your rating! Your rating of 5 stars went through for the first driver, the white male. Unfortunately, the act of evaluation itself can operate as a conduit for bias, meaning underrepresented groups could have lower ratings. A rating of less than 4.6 on Uber, for example, can result in disciplinary action.</p><br>");
+			    .html("<p>Thanks for your rating! Your rating of 5 stars went through for the first driver, the white male. Unfortunately, star ratings can cause bias themselves, so underrepresented groups could have lower ratings than what you gave. A rating of less than 4.6 on Uber, for example, can result in disciplinary action.</p><br>");
 			  } else {
 			    d3.select("#photos").append("text")
-			    .html("<p>Thanks for your rating! Unfortunately ratings of less than 4.6 on Uber can result in disciplinary action against the driver. Furthermore, the act of evaluation can act as a conduit for bias, meaning that underrepresented groups could have a lower rating than what you gave.</p><br>");
+			    .html("<p>Thanks for your rating! Unfortunately ratings of less than 4.6 on Uber can result in disciplinary action against the driver. Unfortunately, star ratings can cause bias themselves, so underrepresented groups could have a lower rating than what you gave.</p><br>");
 			  }
 			  d3.select("#photos").append("button")
 			  .attr("type", "button")
@@ -978,7 +987,7 @@ OLIVIA WHERRY (odw2)
 	<div id="page7" class="slide" style="display: none">
 		<h1> Reporting & Sanctioning </h1>
 		<h2> Reporting Bias: A <i>Choose Your Own Adventure</i> Game </h2>
-		<p>Reporting or flagging tools can be a powerful weapon against overt discrimination. But many platforms don't include this option by default. This game walks you through the process of reporting bias.</p>
+		<p>Reporting or flagging tools can be a powerful weapon against overt discrimination. But many platforms don't include this option by default. <br/>This game walks you through the process of reporting bias.</p>
 
 <svg id="rs" width="960" height="500"></svg>
 
@@ -1227,7 +1236,7 @@ OLIVIA WHERRY (odw2)
 <div id="page8" class="slide" style="display: none">
 	<h1> Measurement & Detection </h1>
 	<h2> The Effect of Population Size on Relative Ratings</h2>
-	<p>People are known to rate others from their own subgroups better than they do people from other groups. Try adjusting the number of people in the blue group and red group to see how the overall ratings for each group changes. </p>
+	<p>People are known to rate others from their own groups better than they do people from other groups. <br/>Try adjusting the number of people in the blue group and red group to see how overall ratings are affected by group size. </p>
 	<p>Blue Raters: 10<input id="blueSlider" type="range" min="10" max="200" value="50" oninput="updateNums(value, redSlider.value)">200
 	&nbsp;&nbsp;&nbsp;Red Raters:  10<input id="redSlider" type="range" min="10" max="200" value="50" oninput="updateNums(blueSlider.value, value)">200</p>
 	<svg id = "md" width="960" height="500"></svg>
