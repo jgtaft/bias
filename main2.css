@@ -140,6 +140,10 @@ footer {
 
 .page-padding {height:100px; width:100%;}
 
+#page3 {
+	height: 1600px;
+}
+
 a {
 	color:white;
 	text-decoration:none;

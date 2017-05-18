@@ -698,7 +698,7 @@ OLIVIA WHERRY (odw2)
 			.text("Subtle");
 		prompt.append("text").attrs({x: width/2-250, y: height/2+20, fill: "black", 'font-size':15})
 			.attr("text-anchor", "end")
-			.text("These prompts aren't very noticeable.");
+			.text("These prompts aren't noticeable.");
 
 		prompt.append("text").attrs({x: width/2+250, y: height/2, fill: "black", 'font-size':30})
 			.attr("text-anchor", "start")
@@ -869,10 +869,12 @@ OLIVIA WHERRY (odw2)
 	</div> <!--END page5-->
 	<div id="page6" class="slide" style="display: none">
 		<h1> Reputation, Reliability & Ratings </h1>
-		<div class="page-padding"></div>
+		<!-- <div class="page-padding"></div> -->
 		<div id="container7" style="height: 200;">
+			<h2>Rating Drivers on Ridesharing Applications</h2>
+					<p>Another set of platform strategies aim to equip users with information about what to expect from a transacting partner on the site—how reliable and trustworthy she can be expected to be, and how she can be expected to behave—based on indicators derived from past behavior. These indicators can confer a sense of expertise, reputation, or trustworthiness that may increase counterparties’ trust in the exchange—perhaps mitigating biases based on countervailing signals—and often take the form of badges or other graphic elements on users’ profiles.<br></p>
 		  <div id="stars" style="text-align: center;">
-		    <h2 style="display: inline;">Select a rating for your driver:</h1>
+		    <h2 style="display: inline;">Select a rating for your driver:<br></h2>
 		  </div>
 		  <div id="photos" style="margin-top: 30px; display: none; text-align: center">
 		    <!-- Photo from http://bit.ly/2qtx3Bc -->
@@ -891,7 +893,7 @@ OLIVIA WHERRY (odw2)
 		<script>
 		var svg = d3.select("#stars").append("svg")
 		.attr("height", 40)
-		.attr("width", 250)
+		.attr("width", 200)
 
 		// Add svg stars
 		for(var i = 0; i < 5; i++){
@@ -951,10 +953,10 @@ OLIVIA WHERRY (odw2)
 			  d3.select("#container7").style("height", "450px");
 			  if(stars == 5) {
 			    d3.select("#photos").append("text")
-			    .html("<p>Thanks for your rating! Your rating of 5 stars went through for the first driver, the white male. Unfortunately, the act of evaluation itself can operate as a conduit for bias, meaning underrepresented groups could have lower ratings. A rating of less than 4.6 on Uber, for example, can result in disciplinary action. <br><br> Another set of platform strategies aim to equip users with information about what to expect from a transacting partner on the site—how reliable and trustworthy she can be expected to be, and how she can be expected to behave—based on indicators derived from past behavior. These indicators can confer a sense of expertise, reputation, or trustworthiness that may increase counterparties’ trust in the exchange—perhaps mitigating biases based on countervailing signals—and often take the form of badges or other graphic elements on users’ profiles.</p><br>");
+			    .html("<p>Thanks for your rating! Your rating of 5 stars went through for the first driver, the white male. Unfortunately, the act of evaluation itself can operate as a conduit for bias, meaning underrepresented groups could have lower ratings. A rating of less than 4.6 on Uber, for example, can result in disciplinary action.</p><br>");
 			  } else {
 			    d3.select("#photos").append("text")
-			    .html("<p>Thanks for your rating! Unfortunately ratings of less than 4.6 on Uber can result in disciplinary action against the driver. Furthermore, the act of evaluation can act as a conduit for bias, meaning that underrepresented groups could have a lower rating than what you gave. <br><br> Another set of platform strategies aim to equip users with information about what to expect from a transacting partner on the site—how reliable and trustworthy she can be expected to be, and how she can be expected to behave—based on indicators derived from past behavior. These indicators can confer a sense of expertise, reputation, or trustworthiness that may increase counterparties’ trust in the exchange—perhaps mitigating biases based on countervailing signals—and often take the form of badges or other graphic elements on users’ profiles.</p><br>");
+			    .html("<p>Thanks for your rating! Unfortunately ratings of less than 4.6 on Uber can result in disciplinary action against the driver. Furthermore, the act of evaluation can act as a conduit for bias, meaning that underrepresented groups could have a lower rating than what you gave.</p><br>");
 			  }
 			  d3.select("#photos").append("button")
 			  .attr("type", "button")
