@@ -196,7 +196,6 @@ display: inline-table;
 		.style("display", "block");
 	}
 
-
 </script>
 
 <body>
@@ -468,245 +467,285 @@ display: inline-table;
 		<h1> Community Composition </h1>
 		<div class="page-padding"></div>
 		<svg id="community" height="600" width="1000"></svg>
-	<script>
-	var community = d3.select("#community");
+		<script>
+		var community = d3.select("#community");
 
-	// category text
-	community.append("text")
-		.attr("x", 190)
-		.attr("y", 45)
-		.attr("fill", "black")
-		.text("Dating Apps");
+		// category text
+		community.append("text")
+			.attr("x", 190)
+			.attr("y", 45)
+			.attr("fill", "black")
+			.text("Dating Apps");
 
-	community.append("text")
-		.attr("x", 640)
-		.attr("y", 45)
-		.attr("fill", "black")
-		.text("Community Requirements");
+		community.append("text")
+			.attr("x", 640)
+			.attr("y", 45)
+			.attr("fill", "black")
+			.text("Community Requirements");
 
-	function circleMouse(c, color){
-		d3.selectAll("." + c).attrs({'stroke-width': 4, stroke: color});
-	}
+		function circleMouse(c, color){
+			d3.selectAll("." + c).attrs({'stroke-width': 4, stroke: color});
+		}
+		function circleOut(c){
+			d3.selectAll("." + c).attrs({'stroke-width': 3, stroke: "black"});
+		}
 
-	function appMouse(a, color){
-		d3.selectAll("#" + a).attrs({'stroke-width':4, stroke:color});
-	}
+		function appMouse(a){
+			d3.selectAll("#" + a).attrs({'stroke-width':4});
+		}
+		function appOut(a){
+			d3.selectAll("#" + a).attrs({'stroke-width':3});
+		}
 
-	//Community Circles
-	community.append("circle")
-		.attrs({id: "circle", r: 35, cx: 750, cy:100, fill: "#A634A7"});
+		//Community Circles
+		community.append("circle")
+			.attrs({id: "circle", r: 35, cx: 650, cy:100, fill: "#A634A7"})
+			.on("mouseover", function(){ circleMouse("location", "#A634A7"); })
+			.on("mouseout", function(){ circleOut("location"); });
 
-	community.append("circle")
-		.attrs({id: "circle", r: 35, cx: 750, cy:200, fill: "#50E3C9"});
+		community.append("circle")
+			.attrs({id: "circle", r: 35, cx: 650, cy:200, fill: "#50E3C9"})
+			.on("mouseover", function(){ circleMouse("gender", "#50E3C9"); })
+			.on("mouseout", function(){ circleOut("gender"); });
 
-	community.append("circle")
-		.attrs({id: "circle", r: 35, cx: 750, cy:300, fill: "#304FFD"});
+		community.append("circle")
+			.attrs({id: "circle", r: 35, cx: 650, cy:300, fill: "#304FFD"})
+			.on("mouseover", function(){ circleMouse("social", "#304FFD"); })
+			.on("mouseout", function(){ circleOut("social"); });
 
-	community.append("circle")
-		.attrs({id: "circle", r: 35, cx: 750, cy:400, fill: "#EACE41"});
+		community.append("circle")
+			.attrs({id: "circle", r: 35, cx: 650, cy:400, fill: "#EACE41"})
+			.on("mouseover", function(){ circleMouse("religion", "#EACE41"); })
+			.on("mouseout", function(){ circleOut("religion"); });
 
-	community.append("circle")
-		.attrs({id: "circle", r: 35, cx: 750, cy:500, fill: "#F8333C"});
+		community.append("circle")
+			.attrs({id: "circle", r: 35, cx: 650, cy:500, fill: "#F8333C"})
+			.on("mouseover", function(){ circleMouse("education", "#F8333C"); })
+			.on("mouseout", function(){ circleOut("education"); });
 
-	//images
-	community.append("image")
-				.attr("xlink:href", "vis2/bumble.png")
-				.attr("x", 705)
-				.attr("y", 205)
-				.attr("transform","scale(.3)");
+		//images
+		community.append("image")
+					.attr("xlink:href", "vis2/bumble.png")
+					.attr("x", 705)
+					.attr("y", 205)
+					.attr("transform","scale(.3)")
+					.on("mouseover", function(){ appMouse("bumble"); })
+					.on("mouseout", function(){ appOut("bumble"); });
 
-	community.append("image")
-				.attr("xlink:href", "vis2/jswipe.png")
-				.attr("x", 705)
-				.attr("y", 530)
-				.attr("transform","scale(.3)");
+		community.append("image")
+					.attr("xlink:href", "vis2/jswipe.png")
+					.attr("x", 705)
+					.attr("y", 530)
+					.attr("transform","scale(.3)")
+					.on("mouseover", function(){ appMouse("jswipe"); })
+					.on("mouseout", function(){ appOut("jswipe"); });
 
-	community.append("image")
-				.attr("xlink:href", "vis2/tinder.png")
-				.attr("x", 705)
-				.attr("y", 865)
-				.attr("transform","scale(.3)");
+		community.append("image")
+					.attr("xlink:href", "vis2/tinder.png")
+					.attr("x", 705)
+					.attr("y", 865)
+					.attr("transform","scale(.3)")
+					.on("mouseover", function(){ appMouse("tinder"); })
+					.on("mouseout", function(){ appOut("tinder"); });
 
-	community.append("image")
-				.attr("xlink:href", "vis2/league.png")
-				.attr("x", 2250)
-				.attr("y", 3735)
-				.attr("transform","scale(.1)");
+		community.append("image")
+					.attr("xlink:href", "vis2/league.png")
+					.attr("x", 2250)
+					.attr("y", 3735)
+					.attr("transform","scale(.1)")
+					.on("mouseover", function(){ appMouse("league"); })
+					.on("mouseout", function(){ appOut("league"); });
 
-	community.append("image")
-				.attr("xlink:href", "vis2/grindr.png")
-				.attr("x", 705)
-				.attr("y", 1565)
-				.attr("transform","scale(.3)");
-	///Text for circles
+		community.append("image")
+					.attr("xlink:href", "vis2/grindr.png")
+					.attr("x", 705)
+					.attr("y", 1565)
+					.attr("transform","scale(.3)")
+					.on("mouseover", function(){ appMouse("grindr"); })
+					.on("mouseout", function(){ appOut("grindr"); });
 
-	community.append("text")
-		.attrs({x: 830, y: 105, fill:"black"})
-		.text("Location");
+		///Text for circles
+		community.append("text")
+			.attrs({x: 700, y: 105})
+			.text("Location");
+		community.append("text")
+			.attrs({x: 700, y: 205})
+			.text("Gender");
+		community.append("text")
+			.attrs({x: 700, y: 305})
+			.text("Social Media Account");
+		community.append("text")
+			.attrs({x: 700, y: 405})
+			.text("Religion");
+		community.append("text")
+			.attrs({x: 700, y: 505})
+			.text("Education");
 
-	community.append("text")
-		.attrs({x: 830, y: 205, fill:"black"})
-		.text("Gender");
+		community.append("text")
+			.attrs({x: 700, y: 125, id: "explanation"})
+			.text("Location sharing is required to use the app.");
+		community.append("text")
+			.attrs({x: 700, y: 225, id: "explanation"})
+			.text("This app targets users of a specific gender.");
+		community.append("text")
+			.attrs({x: 700, y: 325, id: "explanation"})
+			.text("A social media account is required.");
+		community.append("text")
+			.attrs({x: 700, y: 425, id: "explanation"})
+			.text("Open to users from a specific religion.");
+		community.append("text")
+			.attrs({x: 700, y: 525, id: "explanation"})
+			.text("Open to alumni of specific colleges.");
 
-	community.append("text")
-		.attrs({x: 830, y: 305, fill:"black"})
-		.text("Social Media Account");
 
-	community.append("text")
-		.attrs({x: 830, y: 405, fill:"black"})
-		.text("Religion");
+		//text for images
+		community.append("text")
+			.attrs({x: 190, y: 105, 'text-anchor': "end"})
+			.text("Bumble");
+		community.append("text")
+			.attrs({x: 190, y: 205, 'text-anchor': "end"})
+			.text("Jswipe");
+		community.append("text")
+			.attrs({x: 190, y: 305, 'text-anchor': "end"})
+			.text("Tinder");
+		community.append("text")
+			.attrs({x: 190, y: 405, 'text-anchor': "end"})
+			.text("The League");
+		community.append("text")
+			.attrs({x: 190, y: 505, 'text-anchor': "end"})
+			.text("Grindr");
 
-	community.append("text")
-		.attrs({x: 830, y: 505, fill:"black"})
-		.text("Education");
+		community.append("text")
+			.attrs({x: 190, y: 125, 'text-anchor': "end", id: "explanation"})
+			.text("Women send the first message.");
+		community.append("text")
+			.attrs({x: 190, y: 225, 'text-anchor': "end", id: "explanation"})
+			.text("Targeted at Jewish daters.");
+		community.append("text")
+			.attrs({x: 190, y: 325, 'text-anchor': "end", id: "explanation"})
+			.text("The all-purpose app.");
+		community.append("text")
+			.attrs({x: 190, y: 425, 'text-anchor': "end", id: "explanation"})
+			.text("For Ivy League alums.");
+		community.append("text")
+			.attrs({x: 190, y: 525, 'text-anchor': "end", id: "explanation"})
+			.text("For men seeking men.");
 
-	//text for images
-	community.append("text")
-		.attrs({x: 100, y: 105, fill:"black"})
-		.text("Bumble");
-
-	community.append("text")
-		.attrs({x: 100, y: 205, fill:"black"})
-		.text("Jswipe");
-
-	community.append("text")
-		.attrs({x: 100, y: 305, fill:"black"})
-		.text("Tinder");
-
-	community.append("text")
-		.attrs({x: 100, y: 405, fill:"black"})
-		.text("The League");
-
-	community.append("text")
-		.attrs({x: 100, y: 505, fill:"black"})
-		.text("Grindr");
-
-	///lines connecting apps to community structure
-	///Bumble
-	community.append("line")
-			.attr("stroke", "black")
-			.attr("stroke-width", "4")
+		///lines connecting apps to community structure
+		///Bumble
+		community.append("line")
+			.attrs({stroke: "black", 'stroke-width':2})
 			.attr("id", "bumble")
 			.attr("class", "location")
 			.attr("x1", 288)
 			.attr("y1", 100)
-			.attr("x2", 716)
+			.attr("x2", 616)
 			.attr("y2", 100);
 
-	community.append("line")
-			.attr("stroke", "black")
-			.attr("stroke-width", "4")
+		community.append("line")
+			.attrs({stroke: "black", 'stroke-width':2})
 			.attr("id", "bumble")
 			.attr("class", "social")
 			.attr("x1", 288)
 			.attr("y1", 100)
-			.attr("x2", 716)
+			.attr("x2", 616)
 			.attr("y2", 300);
 
-	///Jswipe
-	community.append("line")
-			.attr("stroke", "black")
-			.attr("stroke-width", "4")
+		///Jswipe
+		community.append("line")
+			.attrs({stroke: "black", 'stroke-width':2})
 			.attr("id", "jswipe")
 			.attr("class", "location")
 			.attr("x1", 269)
 			.attr("y1", 200)
-			.attr("x2", 716)
+			.attr("x2", 616)
 			.attr("y2", 100);
 
-	community.append("line")
-			.attr("stroke", "black")
-			.attr("stroke-width", "4")
+		community.append("line")
+			.attrs({stroke: "black", 'stroke-width':2})
 			.attr("id", "jswipe")
 			.attr("class", "social")
 			.attr("x1", 269)
 			.attr("y1", 200)
-			.attr("x2", 716)
+			.attr("x2", 616)
 			.attr("y2", 300);
 
-	community.append("line")
-			.attr("stroke", "black")
-			.attr("stroke-width", "4")
+		community.append("line")
+			.attrs({stroke: "black", 'stroke-width':2})
 			.attr("id", "jswipe")
 			.attr("class", "religion")
 			.attr("x1", 269)
 			.attr("y1", 200)
-			.attr("x2", 716)
+			.attr("x2", 616)
 			.attr("y2", 400);
 
-	///tinder
-	community.append("line")
-			.attr("stroke", "black")
-			.attr("stroke-width", "4")
+		///tinder
+		community.append("line")
+			.attrs({stroke: "black", 'stroke-width':2})
 			.attr("id", "tinder")
 			.attr("class", "location")
 			.attr("x1", 288)
 			.attr("y1", 300)
-			.attr("x2", 716)
+			.attr("x2", 616)
 			.attr("y2", 100);
 
-	community.append("line")
-			.attr("stroke", "black")
-			.attr("stroke-width", "4")
+		community.append("line")
+			.attrs({stroke: "black", 'stroke-width':2})
 			.attr("id", "tinder")
 			.attr("class", "social")
 			.attr("x1", 288)
 			.attr("y1", 300)
-			.attr("x2", 716)
+			.attr("x2", 616)
 			.attr("y2", 300);
 
-	///the league
-	community.append("line")
-			.attr("stroke", "black")
-			.attr("stroke-width", "4")
-			.attr("id", "league")
-			.attr("class", "location")
-			.attr("x1", 275)
-			.attr("y1", 400)
-			.attr("x2", 716)
-			.attr("y2", 100);
+		///the league
+		community.append("line")
+			.attrs({stroke: "black", 'stroke-width':2})
+				.attr("id", "league")
+				.attr("class", "location")
+				.attr("x1", 275)
+				.attr("y1", 400)
+				.attr("x2", 616)
+				.attr("y2", 100);
 
-	community.append("line")
-			.attr("stroke", "black")
-			.attr("stroke-width", "4")
+		community.append("line")
+			.attrs({stroke: "black", 'stroke-width':2})
 			.attr("id", "league")
 			.attr("class", "social")
 			.attr("x1", 275)
 			.attr("y1", 400)
-			.attr("x2", 716)
-			.attr("y2", 500);
+			.attr("x2", 616)
+			.attr("y2", 300);
 
-	community.append("line")
-			.attr("stroke", "black")
-			.attr("stroke-width", "4")
+		community.append("line")
+			.attrs({stroke: "black", 'stroke-width':2})
 			.attr("id", "league")
 			.attr("class", "education")
 			.attr("x1", 275)
 			.attr("y1", 400)
-			.attr("x2", 716)
-			.attr("y2", 300);
+			.attr("x2", 616)
+			.attr("y2", 500);
 
-	///grindr
-	community.append("line")
-			.attr("stroke", "black")
-			.attr("stroke-width", "4")
+		///grindr
+		community.append("line")
+			.attrs({stroke: "black", 'stroke-width':2})
 			.attr("id", "grindr")
 			.attr("class", "gender")
 			.attr("x1", 279)
 			.attr("y1", 500)
-			.attr("x2", 716)
-			.attr("y2", 100);
+			.attr("x2", 616)
+			.attr("y2", 200);
 
-	community.append("line")
-			.attr("stroke", "black")
-			.attr("stroke-width", "4")
+		community.append("line")
+			.attrs({stroke: "black", 'stroke-width':2})
+			.attr("id", "grindr")
 			.attr("class", "location")
 			.attr("x1", 279)
 			.attr("y1", 500)
-			.attr("x2", 716)
-			.attr("y2", 200);
+			.attr("x2", 616)
+			.attr("y2", 100);
 
-	</script>
+		</script>
 
 	</div> <!--END page2-->
 
