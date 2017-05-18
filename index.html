@@ -131,7 +131,58 @@ span.blue {
 	text-align: center;
 	border-radius: 5px;
 }
+#hands div {
+  display: inline-table;
+}
 
+#rowcontainer {
+  width:100%;
+  padding-bottom: 40px;
+}
+
+#rowcontainer div {
+  display: inline-table;
+
+}
+
+#handcontainer {
+  width: 70%;
+  height: 50%;
+}
+
+#handcontainer div {
+
+display: inline-table;
+
+}
+
+#whitehand {
+  width:35%;
+}
+
+#blackhand{
+  width: 35%;
+}
+
+#textcontainer {
+  width: 70%;
+}
+
+#textcontainer div {
+  display: inline-table;
+}
+
+#textbox1{
+  width: 35%;
+  font-size: 90px;
+  text-align: center;
+  font-weight: 700;
+}
+#textbox2{
+  width: 65%;
+  font-size: 50px;
+  text-align: left;
+}
 
 </style>
 </head>
@@ -153,7 +204,6 @@ span.blue {
 			<a href="#composition" class="button">Community Composition</a>
 			<a href="#policies" class="button">Policies & Messaging </a>
 			<a href="#prompting" class="button">Prompting & Priming</a>
-			<a href="#howlearn" class="button">How Users Connect</a>
 		</div>
 		<div id="nav">
 			<a href="#whatlearn" class="button">What Users Can Learn</a>
@@ -816,7 +866,7 @@ span.blue {
 			// })
 			.on("click", function(d){
 				d3.selectAll("#ppGroup").remove();
-				showImage(d.Filename, d.color);
+				showImage(d.Filename, d.color, d.App);
 			});
 
 		prompt.selectAll("text#app").data(data).enter().append("text")
@@ -827,23 +877,44 @@ span.blue {
 			.text(function(d){ return d.App; })
 			.on("click", function(d){
 				d3.selectAll("#ppGroup").remove();
-				showImage(d.Filename, d.color);
+				showImage(d.Filename, d.color, d.App);
 			});
 		})
 
-		function showImage(filename, color){
+		var daddyhuntText = ["Gay dating app", "DaddyHunt asks users", "to agree to the","DaddyHunt Code when", "they create or edit their", "profiles, ensuring that","values of safety and", "respect are front and", "center for the community."];
+		var taskrabbitText = [];
+		var twitterText = [];
+		var nextdoorText = [];
+
+		function showImage(filename, color, app){
 			var g = prompt.append("g").attr("id", "ppGroup")
 				.on("click", function(){
 					d3.selectAll("#ppGroup").remove();
 				});
 			g.append("rect")
-				.attrs({x:90, y:90, height: 600, width: 600, fill: color});
+				.attrs({x:(width/2)-300, y:(height/2)-300, height: 600, width: 600, fill: color});
 			g.append("image")
 				.attr("xlink:href", "priming/" + filename)
-				.attrs({id: "ppImg", x:100, y:100});
+				.attrs({id: "ppImg", x:(width/2)-290, y:(height/2)-290})
+				.attr("height", 400);
 			g.append("image")
 				.attr("xlink:href", "priming/close.png")
-				.attrs({x: 657, y: 93, width:30});
+				.attrs({x: 737, y: 73, width:30});
+
+			if(app=="DaddyHunt"){
+				for (i=0; i<daddyhuntText.length; i++){
+					g.append("text")
+						.attr("x", 480)
+						.attr("y", (i * 40) + 150)
+						.attrs({fill: "black", 'font-size': 27})
+						.text(daddyhuntText[i]);
+				}
+			}
+			else if (app=="TaskRabbit") { text = taskrabbitText; }
+			else if (app=="Twitter") { text = twitterText; }
+			else if (app=="Nextdoor") { text = nextdoorText; }
+
+
 		}
 
 		// function poptext(){
@@ -852,19 +923,53 @@ span.blue {
 	</script>
 	</div> <!--END page1-->
 
-	<div id="page5" class="slide">
-		<a name="howlearn"></a>
-		<h1> How Users Learn About One Another </h1>
-		<div class="page-padding"></div>
-		<p>Platforms often function like markets, helping supply find demand—and vice versa. But platforms employ a wide range of techniques to facilitate this process. Some assume a more passive role in matching supply and demand (leaving a good deal of the process of finding an appropriate partner to the transacting parties themselves) while others take a more active role (automating much of the process of pairing riders and drivers, for example). Some provide users with tools to search and sort; others provide users with their own recommendations. In many cases, the marketplace that users confront on these platforms is a rank ordered list, of which platforms cannot help but play a crucial part. By necessity, platforms scaffold the process by which users find one another, and different design choices can leave greater or less leeway for users to exercise prejudicial or biased preferences.</p>
-	</div> <!--END page2-->
 
 	<div id="page6" class="slide">
 		<a name="whatlearn"></a>
 		<h1> What Users Learn About One Another </h1>
+		<h1> The Visible Hand </h1>
+		<h2> In online marketplaces, black sellers do worse than white sellers on a variety of market outcomes: </h2>
+
+		<div id="hands"></div>
 		<div class="page-padding"></div>
-		<p>
-In offline interactions, indicators of identity, reputation, and personality can be gleaned from a variety of sources. But in platform-mediated interactions, users generally know about one another based on the information provided on the platform. Platforms may encourage (or require) users to present personal information about themselves via profiles, photographs, predefined fields, or other means; conversely, they may purposively withhold personal information during a transaction, or discretize how such information is presented. Platforms may also authenticate users’ identities by linking them to external sources or by requiring users to use their real names on the platform. Information that leads users to see a counterparty as a “whole person” might lead them to rely less on discrete signals (gender, ethnicity, etc.) in choosing with whom to transact, and can provide the opportunity for counterstereotypical signals to be presented; however, user information (perhaps particularly photographs and names) can also introduce additional information upon which people may make biased judgments. In addition, well-intentioned limitations on information collection may sometimes have unanticipated detrimental consequences, by leading counterparties to fall back on available information that they assume to be correlated with withheld characteristics.</p>
+		<script>
+
+		var raceData;
+
+		d3.tsv("race2.tsv", function (error, data) {
+		  if (error) {console.log(error); }
+
+		    data.forEach(function(d){
+
+		      differentialdisplay = Math.round((1 - (d.black / d.white)) * 100);
+		      differential = (1 - (d.black / d.white));
+
+		      baseline = .45;
+
+		      baselineredux = baseline - (baseline * differential);
+
+		      var handPath = "M216.328,133.369c17.025,0,27.393,13.896,27.393,30.922l-0.057,151.286c0,4.267,3.457,7.716,7.727,7.716c4.263,0,7.72-3.45,7.72-7.716l-0.048-248.82c0-17.022,13.803-30.821,30.83-30.821c17.023,0,30.828,13.799,30.828,30.821l0.04,236.134c0,4.844,3.917,8.76,8.757,8.76c4.833,0,8.757-3.917,8.757-8.76l0.008-272.059c0-17.033,13.8-30.832,30.828-30.832c17.028,0,30.825,13.799,30.825,30.832l0.223,269.056c0,4.387,3.553,7.936,7.938,7.936c4.244,0,7.668-3.326,7.893-7.51c0.016,0.003,0.045-227.849,0.045-227.849c0-17.025,13.793-30.825,30.818-30.825s30.83,13.799,30.83,30.825l0.217,333.124c0,4.75,3.854,8.606,8.604,8.606s8.6-3.856,8.6-8.606l0.145-118.66c0.008-17.029,13.811-30.821,30.836-30.817c17.023,0,30.82,13.807,30.82,30.838l-0.078,205.47c-2.617,26.062-76.139,140.179-103.217,144.849v70.38c0,22.171-17.971,40.132-40.135,40.132H278.156c-22.167,0-40.139-17.961-40.139-40.132v-76.289c-43.353-32.479-47.14-172.27-47.14-175.051V161.983C190.877,144.959,202.018,133.369,216.328,133.369z";
+
+
+		      rowcontainer = d3.select("#hands").append("div").attr("id", "rowcontainer");
+		      handcontainer = rowcontainer.append("div").attr("id", "handcontainer");
+		      textcontainer = rowcontainer.append("div").attr("id", "textcontainer");
+		      whitehand = handcontainer.append("div")
+		        .attr("id", "whitehand").append("svg")
+		        .attr("height", 350)
+		        .attr("width", 260)
+		        .append("path")
+		        .attr("d", handPath)
+		        .attr("transform", function(){return "scale(" + baseline + ")"}).style("fill", "#FFDFC4");
+		      blackhand = handcontainer.append("div").attr("id", "blackhand").append("svg").attr("height", 350).attr("width", 260).append("path").attr("d", handPath).attr("transform", function(){return "scale(" + baselineredux + ")"}).style("fill", "#5C3836");
+		      textbox1 = textcontainer.append("div").attr("id", "textbox1").append("text").text( function(){return differentialdisplay + "%"});
+		      textbox2 = textcontainer.append("div").attr("id", "textbox2").append("text").text( function(){return d.variable});
+
+		    });
+		});
+
+		</script>
+
 	</div> <!--END page3-->
 	<div id="page7" class="slide">
 		<a name="reputation"></a>
