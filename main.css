@@ -78,7 +78,7 @@ footer {
 	position: static;
 	background: white;
 	width: 1000px;
-	height:325px;
+	height:355px;
 
 	text-align: justify;
     text-justify: inter-word;
@@ -143,7 +143,7 @@ footer {
 }
 
 
-.button {
+.slideButton, .button {
     background-color: white;
     border: 5px solid #70A9A1;
     color: #70A9A1;
