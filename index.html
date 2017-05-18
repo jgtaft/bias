@@ -755,6 +755,10 @@ p {
 			});
 		})
 
+		prompt.append("text")
+			.attrs({x: width/2, y: height/2-10, 'text-anchor':"middle", 'font-style': "italic"})
+			.text("Click a square to learn more!");
+
 		var daddyhuntText = ["Gay dating app", "DaddyHunt asks", "users to agree to", "the DaddyHunt Code", "when they create or", "edit their profiles", "ensuring that values","of safety and respect", "are front and center", "for the community."];
 		var taskrabbitText = ["Task and labor site", "TaskRabbit shows", "users seeking workers", "a list of tasks that", "sometimes show", "images of gendered", "stereotypes of jobs", "like Personal Assitant.", "This early, subtle", "prompt could harm", "workers who don't fit","into these gendered","categories."];
 		var twitterText = ["Researchers studying harrassment on Twitter", "built a bot that finds instances of racist", "language and tweets at the user asking them", "to stop. They found that white 'users' with", "many followers were most effective at", "changing behavior in this after-the-fact", "intervention."];
@@ -1237,8 +1241,8 @@ p {
 	<h1> Measurement & Detection </h1>
 	<h2> The Effect of Population Size on Relative Ratings</h2>
 	<p>People are known to rate others from their own groups better than they do people from other groups. <br/>Try adjusting the number of people in the blue group and red group to see how overall ratings are affected by group size. </p>
-	<p>Blue Raters: 10<input id="blueSlider" type="range" min="10" max="200" value="50" oninput="updateNums(value, redSlider.value)">200
-	&nbsp;&nbsp;&nbsp;Red Raters:  10<input id="redSlider" type="range" min="10" max="200" value="50" oninput="updateNums(blueSlider.value, value)">200</p>
+	<p>Blue Raters: 10<input id="blueSlider" type="range" min="10" max="200" value="50" oninput="updateNums(value, redSlider.value)">200</p>
+	<p>Red Raters:  10<input id="redSlider" type="range" min="10" max="200" value="50" oninput="updateNums(blueSlider.value, value)">200</p>
 	<svg id = "md" width="960" height="500"></svg>
 	<script>
 	var md = d3.select("#md");
